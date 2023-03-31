@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1657976883894337524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1657976883894337525}
+  - component: {fileID: 1657976883894337526}
+  m_Layer: 0
+  m_Name: ArrowController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1657976883894337525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657976883894337524}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1657976883894337526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657976883894337524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8d3ba866cbc7344af35f6b86c6e4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+  - {fileID: 11400000, guid: e7f4c52a45b16c14d9b114dafca04bbc, type: 2}
+  - {fileID: 11400000, guid: 41bb03f36d45db04680766794acba098, type: 2}
+  - {fileID: 11400000, guid: b13f6813d1776ab428a1769014d996f9, type: 2}
+  - {fileID: 11400000, guid: 2fc4c6a98928e6f49a3cf6396816737a, type: 2}
+  - {fileID: 11400000, guid: 14dfeeb7d8051314bac475e9b7bfd42d, type: 2}
+  weaponSprite: {fileID: -1275274001, guid: 9026c0974967d2e45aae63fc934654db, type: 3}
+  prefab: {fileID: 5867563591886797932, guid: 8a6d451fd197fa244a212824d83243be, type: 3}
+  level: 0
+  speed: 0
+  dame: 0
+  timeToDestroy: 0
+  scale: 0
+  cooldown: 0
+  maxLevel: 0
+  amount: 0
+  arrowInterval: 0
+  pierce: 0

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3169779986444597201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3169779986444597198}
+  - component: {fileID: 3169779986444597199}
+  m_Layer: 0
+  m_Name: FireballController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3169779986444597198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3169779986444597201}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3169779986444597199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3169779986444597201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed1810b9b81078489669b3fd5ffc095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+  - {fileID: 11400000, guid: b1346c8533505794ea0fa44eb9247b32, type: 2}
+  - {fileID: 11400000, guid: 6c13b2032aba43147970492f37f0ee57, type: 2}
+  - {fileID: 11400000, guid: e9b2775761989ba44941247648d9be2b, type: 2}
+  - {fileID: 11400000, guid: cc183771a51a0804d876c0fa27ee1a6f, type: 2}
+  - {fileID: 11400000, guid: 8e4b2206fb3d5ac4f8177546856c6c58, type: 2}
+  weaponSprite: {fileID: -373071330, guid: 9026c0974967d2e45aae63fc934654db, type: 3}
+  prefab: {fileID: 5756013666208252537, guid: 5afdb98dded7f614588a154d9ce5405b, type: 3}
+  level: 0
+  speed: 0
+  dame: 0
+  timeToDestroy: 0
+  scale: 0
+  cooldown: 0
+  maxLevel: 0
+  amount: 0
+  fireballInterval: 0
