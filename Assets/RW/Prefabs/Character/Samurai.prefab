@@ -420,6 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703ba07fbeb281041b9c1acdb9043a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStats: {fileID: 11400000, guid: 9053dccb6aa252348b09148a4730a069, type: 2}
   allWeapon:
   - {fileID: 1657976883894337526, guid: 977670c6628038a4a9f88aca754c852e, type: 3}
   - {fileID: 3169779986444597199, guid: c584a1fb7cfd510498f2ec7008c06f2b, type: 3}
@@ -428,8 +429,8 @@ MonoBehaviour:
   - {fileID: 4498423193175938018, guid: dcb9f43d47115ca49a26570f3f199757, type: 3}
   - {fileID: 7945044033374770984, guid: 044ee6b6ba12cae45a6a17c94ce2b6ac, type: 3}
   currentWeaponList: []
-  weaponDefault: {fileID: 7945044033374770984, guid: 044ee6b6ba12cae45a6a17c94ce2b6ac, type: 3}
-  animationController: {fileID: 0}
+  animationController: {fileID: 8925820878296278740}
+  pickUpArea: {fileID: 1208885555681461084}
   healthBar: {fileID: 2283109293703465590}
   floatingTextPrefabs: {fileID: 2439674890540229241, guid: d3c5aaac8a98f1c4fafdeaa395f72794, type: 3}
   playerLevel: 1
@@ -439,7 +440,7 @@ MonoBehaviour:
   currentExp: 0
   maxExp: 0
   takeHitInterval: 0.5
-  amountWeaponChoseWhenLvUp: 0
+  amountWeaponSelectableWhenLvUp: 3
 --- !u!114 &8925820878296278740
 MonoBehaviour:
   m_ObjectHideFlags: 0

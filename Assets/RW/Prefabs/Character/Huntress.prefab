@@ -86,9 +86,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4380201807648364759}
   - component: {fileID: 7008514461989175070}
+  - component: {fileID: -5867068591654819143}
   - component: {fileID: 5504884137581094063}
   - component: {fileID: 1035557526910245417}
-  - component: {fileID: -5867068591654819143}
   - component: {fileID: -1904232305902832444}
   - component: {fileID: 7619007789176531917}
   - component: {fileID: -3357090573566253188}
@@ -128,15 +128,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703ba07fbeb281041b9c1acdb9043a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStats: {fileID: 11400000, guid: 27c60125fb450c2469c4aed2356e88f2, type: 2}
   allWeapon:
   - {fileID: 1657976883894337526, guid: 977670c6628038a4a9f88aca754c852e, type: 3}
   - {fileID: 3169779986444597199, guid: c584a1fb7cfd510498f2ec7008c06f2b, type: 3}
   - {fileID: 7330084141538518953, guid: 43cf49de40528064a97852ac23f9471c, type: 3}
   - {fileID: 1125388957033446071, guid: ca116d9b43bc50b4ca8a37acec7fb31a, type: 3}
   - {fileID: 4498423193175938018, guid: dcb9f43d47115ca49a26570f3f199757, type: 3}
+  - {fileID: 7945044033374770984, guid: 044ee6b6ba12cae45a6a17c94ce2b6ac, type: 3}
   currentWeaponList: []
-  weaponDefault: {fileID: 1657976883894337526, guid: 977670c6628038a4a9f88aca754c852e, type: 3}
-  animationController: {fileID: 0}
+  animationController: {fileID: -5867068591654819143}
+  pickUpArea: {fileID: 6669870643091639532}
   healthBar: {fileID: 5588489041887618426}
   floatingTextPrefabs: {fileID: 2439674890540229241, guid: d3c5aaac8a98f1c4fafdeaa395f72794, type: 3}
   playerLevel: 1
@@ -145,8 +147,20 @@ MonoBehaviour:
   playerSpeed: 5
   currentExp: 0
   maxExp: 0
-  takeHitInterval: 0
-  amountWeaponChoseWhenLvUp: 0
+  takeHitInterval: 0.5
+  amountWeaponSelectableWhenLvUp: 3
+--- !u!114 &-5867068591654819143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5469133203927556303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375006ac77db9714985f6484b32a41f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &5504884137581094063
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -219,18 +233,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &-5867068591654819143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5469133203927556303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 375006ac77db9714985f6484b32a41f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &-1904232305902832444
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -290,10 +292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703ba07fbeb281041b9c1acdb9043a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStats: {fileID: 0}
   allWeapon: []
   currentWeaponList: []
-  weaponDefault: {fileID: 0}
   animationController: {fileID: 0}
+  pickUpArea: {fileID: 0}
   healthBar: {fileID: 0}
   floatingTextPrefabs: {fileID: 0}
   playerLevel: 1
@@ -303,7 +306,7 @@ MonoBehaviour:
   currentExp: 0
   maxExp: 0
   takeHitInterval: 0
-  amountWeaponChoseWhenLvUp: 0
+  amountWeaponSelectableWhenLvUp: 3
 --- !u!1 &5749328944610327764
 GameObject:
   m_ObjectHideFlags: 0
