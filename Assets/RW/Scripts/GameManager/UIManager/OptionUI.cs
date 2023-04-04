@@ -13,12 +13,11 @@ public class OptionUI : MonoBehaviour
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI detaildText;
     public WeaponController optionWeapon;
-    public void SetOption(WeaponController weaponController)
+    public void SetWeapon(WeaponController weaponController)
     {
         optionWeapon = weaponController;
         weaponImage.sprite = optionWeapon.weaponSprite;
-        //spriteWeapon.sprite = weaponController.weaponSprite;
-        nameText.text = optionWeapon.stats[0].projectileName;
+        nameText.text = optionWeapon.projectileName;
         int nextLevel = optionWeapon.level + 1;
         levelText.text = "Level " + nextLevel.ToString();        
         detaildText.text = optionWeapon.getDescriptionNextLevel();

@@ -11,9 +11,16 @@ public class LevelUpUI : MonoBehaviour
 
     public void SetLevelUp(List<WeaponController> selectableList)
     {
-        for (int i = 0; i < selectableList.Count; i++)
+        for (int i = 0; i < optionOptionUIList.Count; i++)
         {
-            optionOptionUIList[i].SetOption(selectableList[i]);
+            optionOptionUIList[i].gameObject.SetActive(true);
+            if (i < selectableList.Count)
+            {
+                optionOptionUIList[i].SetWeapon(selectableList[i]);
+            } else
+            {
+                optionOptionUIList[i].gameObject.SetActive(false);
+            }            
         }
     }
 
@@ -31,8 +38,8 @@ public class LevelUpUI : MonoBehaviour
         if (weaponSelected != null)
         {
             AudioManager.Instance.PlayPowerUpSFX();
+            GameStateManager.Instance.ResumeGame();
             player.UpgradeWeapon(weaponSelected);
-            GameStateManager.Instance.RemuseGame();
             this.gameObject.SetActive(false);
         }        
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     public List<WeaponStats> stats;
+    public string projectileName;
     public Sprite weaponSprite;
     public GameObject prefab;
     public int level;

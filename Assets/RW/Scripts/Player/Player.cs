@@ -5,14 +5,12 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
-
-    private PlayerController playerController;
-
+    public CharacterStats characterStats;
     public List<WeaponController> allWeapon;
     public List<WeaponController> currentWeaponList;
-    public WeaponController weaponDefault;
     public CharacterAnimationController animationController;
-
+    public GameObject pickUpArea;
+    private PlayerController playerController;
     [Header("UI")]
     private InventoryUI inventoryUI;
     public HealthBar healthBar;
@@ -23,47 +21,46 @@ public class Player : MonoBehaviour
     [Header("Stats")]
     public int playerLevel;
     [SerializeField]
-    private int currentHealth;
+    private float currentHealth;
     [SerializeField]
-    private int maxHealth = 100;
+    private float maxHealth;
     [SerializeField]
-    private float playerSpeed = 3f;
+    private float playerSpeed;
     [HideInInspector]
-    public float currentExp = 0;
+    public float currentExp;
     [SerializeField]
     private float maxExp;
     [SerializeField]
     private float takeHitInterval;
-    private int maxAmountWeapon = 6;
+    private int maxNumberOfWeapon = 6;
     [HideInInspector]
-    public int amountWeaponChoseWhenLvUp = 3;
+    public int amountWeaponSelectableWhenLvUp = 3;
     private bool isTakeHitInterval;
     private float timeAfterTakeHit;
 
     private void Awake()
     {
         levelUpUI = FindObjectOfType<LevelUpUI>();
-        levelUpUI.gameObject.SetActive(false);
+        if (levelUpUI != null)
+        {
+            levelUpUI.gameObject.SetActive(false);
+        }        
     }
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.Instance.PlaySFX("ThemeMusic");
+        AudioManager.Instance.PlayMusic("ThemeMusic");
         playerController = FindObjectOfType<PlayerController>();
-        animationController = GetComponent<CharacterAnimationController>();
         inventoryUI = FindObjectOfType<InventoryUI>();
         expBar = FindObjectOfType<ExpBar>();
         playerLevelText = FindObjectOfType<LevelUI>();
 
-        UpgradeWeapon(weaponDefault);
-        currentHealth = maxHealth;
-        playerLevel = 1;
-        maxExp = 100;
+        SetCharacterDefaultStats();
+        UpgradeWeapon(characterStats.defaultWeapon);
+
         timeAfterTakeHit = 0;
-
-        maxAmountWeapon = 6;
-        amountWeaponChoseWhenLvUp = 3;
-
+        maxNumberOfWeapon = 6;
+        amountWeaponSelectableWhenLvUp = 3;
         isTakeHitInterval = false;
 
         playerLevelText.UpdateLeveTextlUI(playerLevel);
@@ -91,6 +88,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    
+
     private void Move()
     {        
         {
@@ -104,7 +103,7 @@ public class Player : MonoBehaviour
             
             if (currentHealth > dmg)
             {
-                ShowFloatingText(dmg);
+                ShowFloatingText(dmg, true);
                 animationController.TakeHitAnimation();
                 currentHealth -= dmg;
                 isTakeHitInterval = true;
@@ -112,30 +111,39 @@ public class Player : MonoBehaviour
             }
             else
             {
-                AudioManager.Instance.PlaySFX("GameOver");
                 Death();
             }
             healthBar.SetCurrentHeath(currentHealth);
         }        
     }
 
-    private void ShowFloatingText(float dame)
+    private void ShowFloatingText(float number, bool isLoseHp)
     {
         if (floatingTextPrefabs)
         {
-            var dameText = Instantiate(floatingTextPrefabs, transform.position, Quaternion.identity, transform);
-            dameText.GetComponent<TextMeshPro>().text = $"-{dame}";
+            var text = Instantiate(floatingTextPrefabs, transform.position, Quaternion.identity, transform);
+            if (isLoseHp)
+            {
+                text.GetComponent<TextMeshPro>().text = $"-{number}";
+                text.GetComponent<TextMeshPro>().color = Color.red;
+            } else
+            {
+                text.GetComponent<TextMeshPro>().text = $"+{number}";
+                text.GetComponent<TextMeshPro>().color = Color.green;
+            }
+            
         }
     }
 
-    public void GainHP(int heath)
+    public void GainHP(int health)
     {
-        if (currentHealth + heath > maxHealth)
+        ShowFloatingText(health, false);
+        if (currentHealth + health > maxHealth)
         {
             currentHealth = maxHealth;
         } else
         {
-            currentHealth += heath;
+            currentHealth += health;
         }
         healthBar.SetCurrentHeath(currentHealth);
     }
@@ -162,21 +170,22 @@ public class Player : MonoBehaviour
     {
         GameStateManager.Instance.StopGame();
         AudioManager.Instance.PlaySFX("LevelUp");
-        playerLevel++;
-        maxExp *= 1.5f;
-        currentExp = 0;
-        maxHealth += 50;
+        playerLevel++; 
+        UpdateStatsLevelUp();
 
         playerLevelText.UpdateLeveTextlUI(playerLevel);
         healthBar.SetMaxHeath(maxHealth);
         expBar.SetMaxEXP(maxExp);
-        levelUpUI.SetLevelUp(PosibleChoseWeapon());
+        levelUpUI.SetLevelUp(SelectableWeaponToUpgrade());
         levelUpUI.gameObject.SetActive(true);
     }
+
+    
 
     private void Death()
     {
         currentHealth = 0;
+        AudioManager.Instance.PlaySFX("GameOver");
         animationController.DeathAnimation();
         GameStateManager.Instance.GameOver();
     }
@@ -203,10 +212,12 @@ public class Player : MonoBehaviour
         AudioManager.Instance.PlaySFX("PowerUp");
     }    
 
-    public List<WeaponController> PosibleChoseWeapon()
+    //L?i ch?n weapon khi max lv
+    public List<WeaponController> SelectableWeaponToUpgrade()
     {
         List<WeaponController> selectableWeapon = new List<WeaponController>();
-        for (int i = 0; i < amountWeaponChoseWhenLvUp; i++)
+        /*List<WeaponController> unselectableWeapon = new List<WeaponController>();
+        for (int i = 0; i < amountWeaponSelectableWhenLvUp; i++)
         {
             bool selected = false;
             while (!selected)
@@ -223,22 +234,159 @@ public class Player : MonoBehaviour
                 }
                 if (!weaponAvailable)
                 {
-                    foreach (WeaponController selectedWeapon in currentWeaponList)
+                    foreach (WeaponController weapon in currentWeaponList)
                     {
-                        if (selectedWeapon.stats[0].projectileName == allWeapon[rand].stats[0].projectileName && selectedWeapon.level < selectedWeapon.stats[0].maxLevel)
+                        if (weapon.level == weapon.maxLevel)
                         {
-                            selectableWeapon.Add(selectedWeapon);
+                            unselectableWeapon.Add(weapon);
+                        } else if (weapon.stats[0].projectileName == allWeapon[rand].stats[0].projectileName)
+                        {
+                            selectableWeapon.Add(weapon);
                             selected = true;
                         }
                     }
                     if (!selected && currentWeaponList.Count < maxAmountWeapon)
                     {
-                        selectableWeapon.Add(allWeapon[rand]);
+                        bool canSelect = true;
+                        foreach (WeaponController weapon in unselectableWeapon)
+                        {
+                            if (weapon.stats[0].projectileName == allWeapon[rand].stats[0].projectileName)
+                            {
+                                canSelect = false;
+                                break;
+                            }
+                        }
+                        if (canSelect)
+                        {
+                            selectableWeapon.Add(allWeapon[rand]);
+                        }
                         selected = true;
                     }
                 }                
             }
+        }*/
+        int weaponsMaxLv = 0;
+        foreach (WeaponController weapon in currentWeaponList)
+        {
+            if (weapon.level == weapon.maxLevel)
+            {
+                weaponsMaxLv++;
+            }
+        }
+        Debug.Log("weaponsMaxLv " + weaponsMaxLv);
+        int numberSelectable;
+        if (maxNumberOfWeapon - weaponsMaxLv < amountWeaponSelectableWhenLvUp)
+        {
+            numberSelectable = maxNumberOfWeapon - weaponsMaxLv;
+            if (numberSelectable > 0)
+            {
+                if (currentWeaponList.Count == maxNumberOfWeapon)
+                {
+                    foreach (WeaponController weapon in currentWeaponList)
+                    {
+                        if (weapon.level < weapon.maxLevel)
+                        {
+                            selectableWeapon.Add(weapon);
+                        }
+                    }
+                    return selectableWeapon;
+                }                
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            numberSelectable = amountWeaponSelectableWhenLvUp;            
+        }
+
+        
+        for (int i = 0; i < numberSelectable; i++)
+        {
+            bool isSelected = false;
+            while (!isSelected)
+            {
+                int rand = Random.Range(0, allWeapon.Count);
+                bool isAlreadyHave = false;
+                foreach (WeaponController weapon in selectableWeapon)
+                {
+                    if (allWeapon[rand].projectileName == weapon.projectileName)
+                    {
+                        isAlreadyHave = true;
+                        break;
+                    }
+                }
+                if (isAlreadyHave)
+                {
+                    continue;
+                }
+                bool isWeaponMaxLv = false;
+                foreach(WeaponController weapon in currentWeaponList)
+                {
+                    if (allWeapon[rand].projectileName == weapon.projectileName)
+                    {
+                        if (weapon.level < weapon.maxLevel)
+                        {
+                            selectableWeapon.Add(weapon);
+                            isSelected = true;
+                        }
+                        else
+                        {
+                            isWeaponMaxLv = true;
+                        }
+                        break;
+                    }                                        
+                }
+                if (!isSelected && !isWeaponMaxLv)
+                {
+                    selectableWeapon.Add(allWeapon[rand]);
+                    isSelected = true;
+                }
+                
+            }
         }
         return selectableWeapon;
+    }
+    public void SetCharacterDefaultStats()
+    {
+        playerLevel = 1;
+        maxHealth = characterStats.defaultMaxHealth;
+        currentHealth = maxHealth;
+        maxExp = characterStats.defaultMaxExp;
+        currentExp = 0;
+        playerSpeed = characterStats.defaultSpeed;
+        float pickUpRadius = characterStats.defaultpickUpRadius;
+        pickUpArea.transform.localScale = new Vector3(pickUpRadius, pickUpRadius, pickUpRadius);
+    }
+    private void UpdateStatsLevelUp()
+    {
+        float tempMaxHealth = maxHealth;
+        maxHealth *= characterStats.healthForLevelUpStep;
+        currentHealth = (currentHealth / tempMaxHealth) * maxHealth;
+        maxExp *= characterStats.expForLevelUpStep;
+        currentExp = 0;
+    }
+    public void ResetGame()
+    {
+        transform.position = Vector3.zero;
+        foreach (WeaponController weapon in currentWeaponList)
+        {
+            Destroy(weapon);
+        }
+        currentWeaponList.Clear();
+
+        SetCharacterDefaultStats();
+
+        inventoryUI.ResetGame();
+        playerLevelText.UpdateLeveTextlUI(playerLevel);
+        healthBar.SetMaxHeath(maxHealth);
+        healthBar.SetCurrentHeath(currentHealth);
+        expBar.SetMaxEXP(maxExp);
+        expBar.SetCurrentEXP(0);
+
+        UpgradeWeapon(characterStats.defaultWeapon);
+        animationController.ResetGame();
     }
 }
