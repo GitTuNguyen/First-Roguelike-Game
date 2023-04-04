@@ -4,7 +4,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Character Stats")]
 public class CharacterStats : ScriptableObject
 {
-    public GameObject defaultWeapon;
-    public int characterHP;
-    public float characterSpeed;
+    public string characterName;
+    public WeaponController defaultWeapon;
+    public float defaultpickUpRadius;
+
+    public float defaultSpeed;
+
+    public float defaultMaxHealth;
+    public float healthForLevelUpStep;
+
+    public float defaultMaxExp;
+    public float expForLevelUpStep;
+
 }
