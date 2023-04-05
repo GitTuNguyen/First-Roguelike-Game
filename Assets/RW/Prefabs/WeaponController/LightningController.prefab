@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 74a33ad5b9ea13b4681c1fc9d9ce61ad, type: 2}
   - {fileID: 11400000, guid: 8983b91dceb58e54eb4b415a477bd1dc, type: 2}
   - {fileID: 11400000, guid: 95f5c9f7836bfea43a871738c828e8c6, type: 2}
+  projectileName: Lightning
   weaponSprite: {fileID: -1465827012, guid: 9026c0974967d2e45aae63fc934654db, type: 3}
   prefab: {fileID: 8111163115162873365, guid: 9689f569ac32d37488defc5a8ffc7f86, type: 3}
   level: 0

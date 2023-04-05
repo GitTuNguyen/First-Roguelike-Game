@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e9b2775761989ba44941247648d9be2b, type: 2}
   - {fileID: 11400000, guid: cc183771a51a0804d876c0fa27ee1a6f, type: 2}
   - {fileID: 11400000, guid: 8e4b2206fb3d5ac4f8177546856c6c58, type: 2}
+  projectileName: FireBall
   weaponSprite: {fileID: -373071330, guid: 9026c0974967d2e45aae63fc934654db, type: 3}
   prefab: {fileID: 5756013666208252537, guid: 5afdb98dded7f614588a154d9ce5405b, type: 3}
   level: 0

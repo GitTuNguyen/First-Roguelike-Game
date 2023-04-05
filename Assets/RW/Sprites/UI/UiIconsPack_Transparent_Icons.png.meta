@@ -314,7 +314,7 @@ TextureImporter:
         width: 209
         height: 216
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -322,6 +322,27 @@ TextureImporter:
       bones: []
       spriteID: 5fe7500e954f1d14bbb8e31b7cf6a663
       internalID: -853034288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UiIconsPack_Transparent_Icons_10
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 1228
+        width: 226
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef35db16078c5374cbac917b3a7eb999
+      internalID: 1082351897
       vertices: []
       indices: 
       edges: []
@@ -347,6 +368,7 @@ TextureImporter:
       UiIconsPack_Transparent_Icons_9: -853034288
       UiIconsPack_Transparent_Icons_7: 1501951876
       UiIconsPack_Transparent_Icons_5: 1610095059
+      UiIconsPack_Transparent_Icons_10: 1082351897
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

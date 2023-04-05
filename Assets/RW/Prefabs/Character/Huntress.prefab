@@ -91,7 +91,6 @@ GameObject:
   - component: {fileID: 1035557526910245417}
   - component: {fileID: -1904232305902832444}
   - component: {fileID: 7619007789176531917}
-  - component: {fileID: -3357090573566253188}
   m_Layer: 7
   m_Name: Huntress
   m_TagString: Player
@@ -161,6 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375006ac77db9714985f6484b32a41f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterAnimator: {fileID: 1035557526910245417}
+  spriteRenderer: {fileID: 5504884137581094063}
 --- !u!212 &5504884137581094063
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -280,33 +281,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-3357090573566253188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5469133203927556303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 703ba07fbeb281041b9c1acdb9043a3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterStats: {fileID: 0}
-  allWeapon: []
-  currentWeaponList: []
-  animationController: {fileID: 0}
-  pickUpArea: {fileID: 0}
-  healthBar: {fileID: 0}
-  floatingTextPrefabs: {fileID: 0}
-  playerLevel: 1
-  currentHealth: 0
-  maxHealth: 100
-  playerSpeed: 3
-  currentExp: 0
-  maxExp: 0
-  takeHitInterval: 0
-  amountWeaponSelectableWhenLvUp: 3
 --- !u!1 &5749328944610327764
 GameObject:
   m_ObjectHideFlags: 0

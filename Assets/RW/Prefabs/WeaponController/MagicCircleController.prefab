@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d6f9668a55092b742ac49bec75020ba0, type: 2}
   - {fileID: 11400000, guid: dd789e9a278beea4c9138f2c78581641, type: 2}
   - {fileID: 11400000, guid: 495fe8698032d924ca2839672cffeee7, type: 2}
+  projectileName: MagicCircle
   weaponSprite: {fileID: 1897643641, guid: 9026c0974967d2e45aae63fc934654db, type: 3}
   prefab: {fileID: 6763514533152279888, guid: ed1738f4aab9b144bae96d56a82b639f, type: 3}
   level: 0

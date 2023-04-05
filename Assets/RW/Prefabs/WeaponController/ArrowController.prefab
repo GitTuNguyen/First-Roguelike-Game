@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b13f6813d1776ab428a1769014d996f9, type: 2}
   - {fileID: 11400000, guid: 2fc4c6a98928e6f49a3cf6396816737a, type: 2}
   - {fileID: 11400000, guid: 14dfeeb7d8051314bac475e9b7bfd42d, type: 2}
+  projectileName: Arrow
   weaponSprite: {fileID: -1275274001, guid: 9026c0974967d2e45aae63fc934654db, type: 3}
   prefab: {fileID: 5867563591886797932, guid: 8a6d451fd197fa244a212824d83243be, type: 3}
   level: 0

@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2252ca1f056da5f49b33cca3317e85eb, type: 2}
   - {fileID: 11400000, guid: 5fa9e891636a6a348af551252b05ee51, type: 2}
   - {fileID: 11400000, guid: f4132e98d22529d40992066e1b1d5af5, type: 2}
+  projectileName: LightSpear
   weaponSprite: {fileID: 1738682655, guid: a3dea28f7869eb14cbf6b1eb6f91a637, type: 3}
   prefab: {fileID: 7940246909920098301, guid: ce228db564662f740b18c43a1ffbf823, type: 3}
   level: 0
