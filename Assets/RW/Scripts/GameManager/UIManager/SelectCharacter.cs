@@ -14,6 +14,6 @@ public class SelectCharacter : MonoBehaviour
     void Start()
     {        
         characterImage.sprite = characterPrefabs.GetComponent<SpriteRenderer>().sprite;
-        weaponDefaultImage.sprite = characterPrefabs.GetComponent<Player>().weaponDefault.GetComponent<WeaponController>().weaponSprite;
+        weaponDefaultImage.sprite = characterPrefabs.GetComponent<Player>().characterStats.defaultWeapon.GetComponent<WeaponController>().weaponSprite;
     }
 }

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [HideInInspector]
     public Vector2 frontdDir;
-    [HideInInspector]
     public Vector2 moveDir;
 
     private CharacterAnimationController characterAnimatorController;
@@ -40,10 +38,14 @@ public class PlayerController : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        moveDir = new Vector2(horizontal, vertical).normalized;
+        moveDir = new Vector2(horizontal, vertical);
         if (moveDir != Vector2.zero)
         {
             frontdDir = moveDir;
+            if ((frontdDir.x < 1 && frontdDir.x > -1) || (frontdDir.y < 1 && frontdDir.y > -1))
+            {
+                frontdDir = frontdDir.normalized;
+            }
         }        
     }    
 

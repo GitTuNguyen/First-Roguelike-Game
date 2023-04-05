@@ -33,15 +33,16 @@ public class FireballController : WeaponController
     protected override IEnumerator AttackRoutine()
     {
         while (!GameStateManager.Instance.isGameOver)
-        {            
-            if (enemySpawner.enemyList.Count > 0)
-            {                
-                for (int i = 0; i < amount; i++)                
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                if (enemySpawner.enemyList.Count > 0)
                 {
                     Attack();
-                    yield return new WaitForSeconds(fireballInterval);
                 }
-            }            
+                yield return new WaitForSeconds(fireballInterval);
+            }
+                       
             yield return new WaitForSeconds(cooldown);
         }
     }

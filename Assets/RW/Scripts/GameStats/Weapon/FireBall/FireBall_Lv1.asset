@@ -24,5 +24,5 @@ MonoBehaviour:
   projectileScale: 1
   attackDuration: 0
   cooldown: 1.2
-  timeToDestroy: 10
+  timeToDestroy: 5
   description: Fires at the nearest enemy.

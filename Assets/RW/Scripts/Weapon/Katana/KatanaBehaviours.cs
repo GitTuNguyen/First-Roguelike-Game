@@ -2,23 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KatanaBehaviours : MonoBehaviour
+public class KatanaBehaviours : WeaponBehaviour
 {
-    private KatanaController katanaController;
-    
-    void Start()
+
+    protected override void Start()
     {
-        katanaController = FindObjectOfType<KatanaController>();
-        Debug.Log(katanaController);
-        Destroy(gameObject, katanaController.timeToDestroy);
+        weaponController = FindObjectOfType<KatanaController>();
+        base.Start();
+        Destroy(gameObject, weaponController.timeToDestroy);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Enemy"))
-        {
-            collision.gameObject.GetComponent<Enemy>().LoseHP(katanaController.dame);
-            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        }
-    }
 }

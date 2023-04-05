@@ -7,9 +7,6 @@ public class LightningController : WeaponController
 {
     public int amount;
     public float lightningInterval;
-    public float baseArea;
-    [HideInInspector]
-    public float currentArea;
     private EnemySpawner enemySpawner;
     protected override void Start()
     {
@@ -23,7 +20,6 @@ public class LightningController : WeaponController
         amount = stats[level - 1].amount;
         lightningInterval = stats[level - 1].projectileInterval;
         scale = stats[level - 1].projectileScale;
-        currentArea = baseArea * scale;
     }
 
     protected override void Attack()

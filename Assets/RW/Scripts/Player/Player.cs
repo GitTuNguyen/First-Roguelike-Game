@@ -35,9 +35,10 @@ public class Player : MonoBehaviour
     private int maxNumberOfWeapon = 6;
     [HideInInspector]
     public int amountWeaponSelectableWhenLvUp = 3;
+    [SerializeField]
     private bool isTakeHitInterval;
     private float timeAfterTakeHit;
-
+    private float remainingExp;
     private void Awake()
     {
         levelUpUI = FindObjectOfType<LevelUpUI>();
@@ -61,6 +62,7 @@ public class Player : MonoBehaviour
         timeAfterTakeHit = 0;
         maxNumberOfWeapon = 6;
         amountWeaponSelectableWhenLvUp = 3;
+        remainingExp = 0;
         isTakeHitInterval = false;
 
         playerLevelText.UpdateLeveTextlUI(playerLevel);
@@ -79,7 +81,7 @@ public class Player : MonoBehaviour
             if (isTakeHitInterval)
             {
                 timeAfterTakeHit += Time.deltaTime;
-                if (timeAfterTakeHit > takeHitInterval)
+                if (timeAfterTakeHit >= takeHitInterval)
                 {
                     isTakeHitInterval = false;
                     timeAfterTakeHit = 0;
@@ -99,8 +101,7 @@ public class Player : MonoBehaviour
     public void LoseHP(int dmg)
     {
         if (!isTakeHitInterval)
-        {
-            
+        {            
             if (currentHealth > dmg)
             {
                 ShowFloatingText(dmg, true);
@@ -151,13 +152,15 @@ public class Player : MonoBehaviour
     {
         if (currentExp + exp >= maxExp)
         {
-            float remainingExp = currentExp + exp - maxExp;
+            remainingExp = currentExp + exp - maxExp;
+            currentExp = maxExp;
+            expBar.SetCurrentEXP(currentExp);
             UpLevel();
-            GainEXP(remainingExp);
         }
         else
         {
             currentExp += exp;
+            remainingExp = 0;
         }
         expBar.SetCurrentEXP(currentExp);
     }
@@ -175,6 +178,7 @@ public class Player : MonoBehaviour
 
         playerLevelText.UpdateLeveTextlUI(playerLevel);
         healthBar.SetMaxHeath(maxHealth);
+        expBar.SetCurrentEXP(currentExp);
         expBar.SetMaxEXP(maxExp);
         levelUpUI.SetLevelUp(SelectableWeaponToUpgrade());
         levelUpUI.gameObject.SetActive(true);
@@ -205,66 +209,21 @@ public class Player : MonoBehaviour
         }
         if (!isAvailable)
         {
-            WeaponController newWeapon = Instantiate(weaponController, Vector2.zero, Quaternion.identity);
+            WeaponController newWeapon = Instantiate(weaponController, transform.position, Quaternion.identity);
             currentWeaponList.Add(newWeapon);
             inventoryUI.UpdateInventoryUI(newWeapon.weaponSprite);
         }
         AudioManager.Instance.PlaySFX("PowerUp");
+        if (remainingExp > 0)
+        {
+            GainEXP(remainingExp);
+        }            
     }    
 
-    //L?i ch?n weapon khi max lv
     public List<WeaponController> SelectableWeaponToUpgrade()
     {
         List<WeaponController> selectableWeapon = new List<WeaponController>();
-        /*List<WeaponController> unselectableWeapon = new List<WeaponController>();
-        for (int i = 0; i < amountWeaponSelectableWhenLvUp; i++)
-        {
-            bool selected = false;
-            while (!selected)
-            {
-                int rand = Random.Range(0, allWeapon.Count);
-                bool weaponAvailable = false;
-                foreach (WeaponController weapon in selectableWeapon)
-                {
-                    if (allWeapon[rand].stats[0].projectileName == weapon.stats[0].projectileName)
-                    {
-                        weaponAvailable = true;
-                        break;
-                    }
-                }
-                if (!weaponAvailable)
-                {
-                    foreach (WeaponController weapon in currentWeaponList)
-                    {
-                        if (weapon.level == weapon.maxLevel)
-                        {
-                            unselectableWeapon.Add(weapon);
-                        } else if (weapon.stats[0].projectileName == allWeapon[rand].stats[0].projectileName)
-                        {
-                            selectableWeapon.Add(weapon);
-                            selected = true;
-                        }
-                    }
-                    if (!selected && currentWeaponList.Count < maxAmountWeapon)
-                    {
-                        bool canSelect = true;
-                        foreach (WeaponController weapon in unselectableWeapon)
-                        {
-                            if (weapon.stats[0].projectileName == allWeapon[rand].stats[0].projectileName)
-                            {
-                                canSelect = false;
-                                break;
-                            }
-                        }
-                        if (canSelect)
-                        {
-                            selectableWeapon.Add(allWeapon[rand]);
-                        }
-                        selected = true;
-                    }
-                }                
-            }
-        }*/
+        
         int weaponsMaxLv = 0;
         foreach (WeaponController weapon in currentWeaponList)
         {

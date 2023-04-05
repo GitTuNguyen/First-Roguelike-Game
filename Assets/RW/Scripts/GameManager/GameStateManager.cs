@@ -9,10 +9,11 @@ public class GameStateManager : MonoBehaviour
     public EnemySpawner enemySpawner;
     public FireballController fireballController;
     public PlayerController playerController;
+    public GameObject gameOverUI;
     public bool isGameOver;
-    public float timer;
     public int enemyKilled;
-    
+    public float timer;
+    private float timePlayed;
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,18 +23,21 @@ public class GameStateManager : MonoBehaviour
     private void Start()
     {
         enemyKilled = 0;
+        timePlayed = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer = Time.timeSinceLevelLoad;
+        timer = Time.timeSinceLevelLoad - timePlayed;
     }
 
     public void GameOver()
     {
-        isGameOver = true;
         enemySpawner.DestroyAllEnemy();
+        isGameOver = true;
+        StopGame();
+        gameOverUI.SetActive(true);
     }
 
     public void StopGame()
@@ -41,11 +45,21 @@ public class GameStateManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void RemuseGame()
+    public void ResumeGame()
     {
         Time.timeScale = 1;
     }
-    
+
+    public void ResetGame()
+    {
+        ResumeGame();
+        isGameOver = false;
+        Player player = FindObjectOfType<Player>();
+        enemyKilled = 0;
+        timePlayed += timer;
+        player.ResetGame();
+    }
+
     public void UpdateEnemyKilled()
     {
         enemyKilled++;

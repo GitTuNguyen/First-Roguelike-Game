@@ -17,12 +17,12 @@ MonoBehaviour:
   projectileLevel: 2
   maxLevel: 5
   projectileDMG: 15
-  projectileSpeed: 6
+  projectileSpeed: 7
   pierce: 0
-  amount: 1
+  amount: 2
   projectileInterval: 0.2
   projectileScale: 0
   attackDuration: 0
   cooldown: 3
-  timeToDestroy: 2.25
-  description: Base damage up by 5. Base speed up by 20%.
+  timeToDestroy: 2.5
+  description: Base damage up by 5. Fires 1 more projectile.

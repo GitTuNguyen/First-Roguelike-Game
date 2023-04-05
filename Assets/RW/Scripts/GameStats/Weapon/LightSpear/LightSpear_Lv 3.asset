@@ -19,10 +19,10 @@ MonoBehaviour:
   projectileDMG: 20
   projectileSpeed: 6
   pierce: 0
-  amount: 1
+  amount: 2
   projectileInterval: 0.2
   projectileScale: 0
   attackDuration: 0
   cooldown: 3
-  timeToDestroy: 2.55
-  description: Base damage up by 5. Effect lasts 0.3 seconds longer.
+  timeToDestroy: 3
+  description: Base damage up by 5. Effect lasts 0.5 seconds longer.

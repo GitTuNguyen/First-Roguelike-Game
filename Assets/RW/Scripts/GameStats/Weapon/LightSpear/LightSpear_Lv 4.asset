@@ -19,10 +19,10 @@ MonoBehaviour:
   projectileDMG: 20
   projectileSpeed: 6
   pierce: 0
-  amount: 2
+  amount: 3
   projectileInterval: 0.2
   projectileScale: 0
   attackDuration: 0
   cooldown: 3
-  timeToDestroy: 2.25
+  timeToDestroy: 3
   description: Fires 1 more projectile.

@@ -19,10 +19,10 @@ MonoBehaviour:
   projectileDMG: 10
   projectileSpeed: 3
   pierce: 1
-  amount: 0
+  amount: 2
   projectileInterval: 0.1
   projectileScale: 1
   attackDuration: 0
   cooldown: 1
-  timeToDestroy: 10
+  timeToDestroy: 5
   description: Cooldown reduced by 0.2 seconds.

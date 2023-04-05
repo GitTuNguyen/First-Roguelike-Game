@@ -18,23 +18,6 @@ public class ExperienceGem : MonoBehaviour
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
-    private void Update()
-    {
-        /*
-        if (isPickedUp)
-        {
-            Vector2 dir = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
-            transform.Translate(dir * speed * Time.deltaTime);
-            if (transform.position == player.transform.position)
-            {
-                Debug.Log("gain exp");
-                player.GainEXP(experiences);
-                Destroy(gameObject);
-            }
-        }
-        */
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("PickUpArea"))

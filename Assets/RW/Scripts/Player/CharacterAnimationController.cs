@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class CharacterAnimationController : MonoBehaviour
 {
-    private Animator characterAnimator;
-    private SpriteRenderer spriteRenderer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        characterAnimator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
+    public Animator characterAnimator;
+    public SpriteRenderer spriteRenderer;
+    
     public void IdleAnimation()
     {
         characterAnimator.SetBool("IsRun", false);
@@ -31,6 +25,13 @@ public class CharacterAnimationController : MonoBehaviour
     public void DeathAnimation()
     {
         characterAnimator.SetBool("IsDeath", true);
+    }
+
+    public void ResetGame()
+    {
+        characterAnimator.SetBool("IsDeath", false);
+        characterAnimator.SetTrigger("Reset");
+
     }
 
     public void SetFlip(bool isFlip)

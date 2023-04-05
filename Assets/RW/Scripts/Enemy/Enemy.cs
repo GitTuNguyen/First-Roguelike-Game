@@ -15,136 +15,95 @@ public class Enemy : MonoBehaviour
 
     public List<LootItems> itemsList;
     public GameObject floatingTextPrefabs;
+    public SpriteRenderer spriteRenderer;
 
     [Header("Enemy Stats")]
     [SerializeField]
-    private float enemyHP = 100;
+    protected float health = 100;
     [SerializeField]
-    private float enemySpeed = 3;
+    protected float speed = 3;
     [SerializeField]
-    private int enemyDMG = 20;
-    [SerializeField]
-    private float timeToAttack = 1;
-    public float cooldownTakeHit;
+    protected float takeHitInterval;
 
-    private float timeAfterTakeHit;
-    private bool canTakeHit = true;
-    private EnemySpawner enemySpawner;
-    private Player player;
-    
+    protected Vector2 dir;
+    protected float timeAfterTakeHit;
+    protected bool canTakeHit = true;
+    protected EnemySpawner enemySpawner;
+
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        player = FindObjectOfType<Player>();
-        timeAfterTakeHit = cooldownTakeHit;
+        timeAfterTakeHit = 0;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {        
         Move();
         FlipSprite();
         if (!canTakeHit)
         {
-            timeAfterTakeHit -= Time.deltaTime;
-            if (timeAfterTakeHit < 0)
+            timeAfterTakeHit += Time.deltaTime;
+            if (timeAfterTakeHit >= takeHitInterval)
             {
-                timeAfterTakeHit = cooldownTakeHit;
+                timeAfterTakeHit = 0;
                 canTakeHit = true;
             }
         }
     }
 
-    private void Move()
-    {        
-        transform.Translate(new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y).normalized * enemySpeed * Time.deltaTime);
+    protected virtual void Move()
+    {
+        transform.Translate(dir * speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<Player>().LoseHP(enemyDMG);
-        }
-        if (collision.collider.CompareTag("LootItem"))
-        {
-            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
-        }
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            timeToAttack -= Time.deltaTime;
-            if (timeToAttack < 0)
-            {
-                collision.gameObject.GetComponent<Player>().LoseHP(enemyDMG);
-                timeToAttack = 1;
-            }            
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            timeToAttack = 1;
-        }
-    }
 
     public void SetSpawner(EnemySpawner spawner)
     {
         enemySpawner = spawner;
     }
 
-    private void Death()
-    {
-        enemySpawner.RemoveEnemyFromList(gameObject);
-        Destroy(gameObject);
-    }
+    
 
     public void LoseHP(float dmg)
     {
         if (canTakeHit)
         {
             AudioManager.Instance.PlaySFX("EnemyTakeHit");
-            if (enemyHP > dmg)
+            if (health > dmg)
             {
-                Debug.Log("enemy take dmg");
                 ShowFloatingText(dmg);
-                enemyHP -= dmg;
+                health -= dmg;
                 canTakeHit = false;
             }
             else
             {
-                DropExp();
-                GameStateManager.Instance.UpdateEnemyKilled();
                 Death();
             }
         }        
     }
-    private void ShowFloatingText(float dame)
+    protected virtual void Death()
+    {
+        DropItem();
+        enemySpawner.RemoveEnemyFromList(gameObject);
+        Destroy(gameObject);
+    }
+    protected void ShowFloatingText(float dame)
     {
         if (floatingTextPrefabs)
         {
             var dameText = Instantiate(floatingTextPrefabs, transform.position, Quaternion.identity, transform);
             dameText.GetComponent<TextMeshPro>().text = $"-{dame}";
+            dameText.GetComponent<TextMeshPro>().color = Color.white;
         }
     }
 
-    private void FlipSprite()
+    protected virtual void FlipSprite()
     {
-        if (transform.position.x > player.transform.position.x)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        } else
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
+        
     }
 
-    private void DropExp()
+    protected void DropItem()
     {        
         float rand = Random.Range(0f, 100f);
         List<LootItems> possibleDrop = new List<LootItems>();

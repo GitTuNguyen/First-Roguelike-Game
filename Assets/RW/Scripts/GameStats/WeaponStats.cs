@@ -6,7 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Projectile Stats")]
 public class WeaponStats : ScriptableObject
 {
-    public string projectileName;
     public Sprite sprite;
     public int projectileLevel;
     public int maxLevel;

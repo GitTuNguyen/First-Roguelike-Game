@@ -15,7 +15,6 @@ public class KatanaController : WeaponController
     {
         player = FindObjectOfType<Player>();
         playerController = FindObjectOfType<PlayerController>();
-        Debug.Log("spawnPosition.count = " + spawnPosition.Count);
         transform.parent = player.transform;
         base.Start();
     }
@@ -41,7 +40,9 @@ public class KatanaController : WeaponController
 
     protected override void Attack()
     {
-        Instantiate(prefab, spawnPosition[spawnPositionIndex].transform.position, spawnPosition[spawnPositionIndex].transform.rotation, spawnPosition[spawnPositionIndex].transform);        
+        base.Attack();
+        var katana = Instantiate(prefab, spawnPosition[spawnPositionIndex].transform.position, spawnPosition[spawnPositionIndex].transform.rotation, spawnPosition[spawnPositionIndex].transform);
+        Debug.Log("katana == null? " + katana == null);
     }
 
     protected override IEnumerator AttackRoutine()
@@ -52,6 +53,7 @@ public class KatanaController : WeaponController
             for (int i = 0; i < amount; i++)
             {                
                 Attack();
+                Debug.Log("katana attack");
                 spawnPositionIndex++;
                 if (spawnPositionIndex >= spawnPosition.Count)
                 {

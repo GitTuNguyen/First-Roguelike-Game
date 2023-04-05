@@ -7,11 +7,11 @@ public class HealthBar : MonoBehaviour
 {
     public Slider slider;
 
-    public void SetMaxHeath(int maxHeath)
+    public void SetMaxHeath(float maxHeath)
     {
         slider.maxValue = maxHeath;
     }
-    public void SetCurrentHeath(int currentHeath)
+    public void SetCurrentHeath(float currentHeath)
     {
         slider.value = currentHeath;
     }
