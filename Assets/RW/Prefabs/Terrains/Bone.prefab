@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5394026216907304552}
   - component: {fileID: 3846624269749913898}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bone
   m_TagString: Terrains
   m_Icon: {fileID: 0}

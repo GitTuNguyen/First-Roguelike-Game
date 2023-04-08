@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4498423193175938019}
   - component: {fileID: 4498423193175938018}
-  - component: {fileID: 4498423193175938017}
   m_Layer: 0
   m_Name: MagicCircleController
   m_TagString: Untagged
@@ -55,30 +54,14 @@ MonoBehaviour:
   weaponSprite: {fileID: 1897643641, guid: 9026c0974967d2e45aae63fc934654db, type: 3}
   prefab: {fileID: 6763514533152279888, guid: ed1738f4aab9b144bae96d56a82b639f, type: 3}
   level: 0
-  speed: 0
   dame: 0
-  timeToDestroy: 0
-  scale: 0
-  cooldown: 0
-  maxLevel: 0
+  speed: 0
+  pierce: 0
+  amount: 0
+  projectileInterval: 0
+  projectileScale: 0
   attackDuration: 0
-  timeAttack: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 512
---- !u!58 &4498423193175938017
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4498423193175938020}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.5
+  cooldown: 0
+  timeToDestroy: 0
+  projectileSpawnPosition: {x: 0, y: 0, z: 0}
+  maxLevel: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4656515304524937087}
   - component: {fileID: 8096356454665744922}
   - component: {fileID: -8147664395712018417}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Column
   m_TagString: Terrains
   m_Icon: {fileID: 0}
@@ -122,4 +122,4 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -936029625
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1

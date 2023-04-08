@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7341157604472048887
+--- !u!1 &4169522948982174323
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7341157604472048886}
-  - component: {fileID: -7063142506174997865}
-  - component: {fileID: 7341157604472048888}
-  - component: {fileID: 7341157604472048889}
-  - component: {fileID: -4293236756569850655}
-  - component: {fileID: 8127907986217151163}
+  - component: {fileID: 1972203847215219460}
+  - component: {fileID: 6053931586446606178}
+  - component: {fileID: 8653671190886287619}
+  - component: {fileID: 4114053918796140089}
+  - component: {fileID: -3257721822338740979}
+  - component: {fileID: -6308438401006744514}
   m_Layer: 9
-  m_Name: Centaur_Male
+  m_Name: Bandit
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7341157604472048886
+--- !u!4 &1972203847215219460
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7341157604472048887}
+  m_GameObject: {fileID: 4169522948982174323}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -36,13 +36,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7063142506174997865
+--- !u!114 &6053931586446606178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7341157604472048887}
+  m_GameObject: {fileID: 4169522948982174323}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3486fc868e238d4d820759c62725abe, type: 3}
@@ -54,7 +54,7 @@ MonoBehaviour:
     dropRate: 75
   - name: Green Gem
     itemPrefabs: {fileID: 5691007620608654421, guid: a4d99e7dcaa602a4aa0c808d52d2cab3, type: 3}
-    dropRate: 25
+    dropRate: 20
   - name: Blue Gem
     itemPrefabs: {fileID: 5691007620608654421, guid: 1104c158c93dc294599a8d527f21e4b7, type: 3}
     dropRate: 0
@@ -62,18 +62,19 @@ MonoBehaviour:
     itemPrefabs: {fileID: 5691007620608654421, guid: dc357dd01f593a64d92a452c19cdcf2e, type: 3}
     dropRate: 0
   floatingTextPrefabs: {fileID: 2439674890540229241, guid: 8dec75385a5550648a87e984a10421d0, type: 3}
-  spriteRenderer: {fileID: 7341157604472048888}
+  spriteRenderer: {fileID: 8653671190886287619}
   health: 10
   speed: 1
   takeHitInterval: 0.5
+  removeTimeDelay: 0.5
   monsterDame: 5
---- !u!212 &7341157604472048888
+--- !u!212 &8653671190886287619
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7341157604472048887}
+  m_GameObject: {fileID: 4169522948982174323}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -107,8 +108,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -936029625
   m_SortingLayer: 1
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 160d3c9d821098848983dddd3f70d172, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: c1bd0a72306b1cb458db1499cc775eaf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,17 +120,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7341157604472048889
+--- !u!95 &4114053918796140089
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7341157604472048887}
+  m_GameObject: {fileID: 4169522948982174323}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3c44464f8d4d8ea49871838f0ee39cae, type: 2}
+  m_Controller: {fileID: 9100000, guid: dab1d57d5c729d947b020030ca00c6cc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -139,14 +140,14 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!50 &-4293236756569850655
+--- !u!50 &-3257721822338740979
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7341157604472048887}
+  m_GameObject: {fileID: 4169522948982174323}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -160,20 +161,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &8127907986217151163
+--- !u!61 &-6308438401006744514
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7341157604472048887}
+  m_GameObject: {fileID: 4169522948982174323}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.093042225, y: -0.3472521}
+  m_Offset: {x: 0.07536286, y: -0.4532366}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -184,5 +185,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.73196703, y: 1.0818763}
+  m_Size: {x: 0.9375355, y: 1.0043981}
   m_EdgeRadius: 0

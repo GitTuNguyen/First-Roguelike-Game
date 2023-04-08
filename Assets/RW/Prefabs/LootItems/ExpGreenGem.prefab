@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3665435360709803224}
   - component: {fileID: 6317355622602670243}
   - component: {fileID: -5692037334530644390}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExpGreenGem
   m_TagString: LootItem
   m_Icon: {fileID: 0}

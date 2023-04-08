@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3665435360709803224}
   - component: {fileID: 2552937124073964260}
   - component: {fileID: 4846142225231105978}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BBQChicken
   m_TagString: LootItem
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8125, y: 1.03125}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 52, y: 66}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1726998008508863177}
   - component: {fileID: 1913540142332453999}
   - component: {fileID: 6110610418820666246}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Light
   m_TagString: Terrains
   m_Icon: {fileID: 0}

@@ -60,6 +60,7 @@ MonoBehaviour:
   health: 15
   speed: 1
   takeHitInterval: 0.5
+  removeTimeDelay: 0.5
   timeMove: 0
   timeToChangeDir: 3
 --- !u!212 &5344526485380698577
