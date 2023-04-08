@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d457a96a9c94755448845f425aace422, type: 3}
   m_Name: FireBall_Lv2
   m_EditorClassIdentifier: 
-  projectileName: Fire Ball
   sprite: {fileID: -1918220492, guid: 90cef7a054d964d40847b4115edc0474, type: 3}
   projectileLevel: 2
   maxLevel: 5
   projectileDMG: 10
-  projectileSpeed: 3
+  projectileSpeed: 5
   pierce: 1
   amount: 2
   projectileInterval: 0.1

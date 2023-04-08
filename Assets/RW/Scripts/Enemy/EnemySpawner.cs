@@ -6,16 +6,19 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public float maxNumberOfEnemy;
-    public List<GameObject> normalEnemyPrefabs = new List<GameObject>();
+    public List<GameObject> normalMonsterPrefabs = new List<GameObject>();
+    public List<GameObject> eliteMonsterPrefabs = new List<GameObject>();
     public List<GameObject> bossPrefabs = new List<GameObject>();
     public GameObject chickenPrefabs;
     [Header("Settings")]
     public float timeBetweenSpawns;
     public float radiusSpawnerCircle;
-    public float spawnChickenInterval;
-    public float timeToSpawnChicken;
+    public float spawnEliteMonsterInterval;
+    public float timeToSpawnEliteMonster;
     public float spawnBossInterval;
     public float timeToSpawnBoss;
+    public float spawnChickenInterval;
+    public float timeToSpawnChicken;
     [HideInInspector]
     public List<GameObject> enemyList = new List<GameObject>();
     private Player player;
@@ -24,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
     {
         StartCoroutine(SpawnRoutine());
         timeToSpawnChicken = 0;
+        timeToSpawnEliteMonster = 0;
         timeToSpawnBoss = 0;
     }
 
@@ -31,6 +35,7 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         timeToSpawnChicken += Time.deltaTime;
+        timeToSpawnEliteMonster += Time.deltaTime;
         timeToSpawnBoss += Time.deltaTime;
     }
     private void SpawnEnemy()
@@ -44,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
         GameObject enemyPrefabs = null;
         if (enemyList.Count < maxNumberOfEnemy)
         {
-            enemyPrefabs = normalEnemyPrefabs[Random.Range(0, normalEnemyPrefabs.Count)];
+            enemyPrefabs = normalMonsterPrefabs[Random.Range(0, normalMonsterPrefabs.Count)];
             
         }
         if (timeToSpawnChicken >= spawnChickenInterval)
@@ -57,6 +62,11 @@ public class EnemySpawner : MonoBehaviour
         {
             enemyPrefabs = bossPrefabs[Random.Range(0, bossPrefabs.Count)];
             timeToSpawnBoss = 0;
+        }
+        if (timeToSpawnEliteMonster >= spawnEliteMonsterInterval)
+        {
+            enemyPrefabs = eliteMonsterPrefabs[Random.Range(0, eliteMonsterPrefabs.Count)];
+            timeToSpawnEliteMonster = 0;
         }
         if (enemyPrefabs != null)
         {

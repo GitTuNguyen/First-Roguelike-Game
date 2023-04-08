@@ -10,7 +10,6 @@ public class MagicCircleController : WeaponController
     
     private GameObject magicCircle;
     private Player player;
-    public float attackDuration;
     protected override void Start()
     {
         player = FindObjectOfType<Player>();
@@ -18,20 +17,10 @@ public class MagicCircleController : WeaponController
         base.Start();
     }
 
-
-    protected override void SetStats(int level)
+    protected override void Attack()
     {
-        base.SetStats(level);
-        scale = stats[level - 1].projectileScale;
+        magicCircle.GetComponent<MagicCircleBehaviour>().Attack();
     }
+    
 
-    protected override IEnumerator AttackRoutine()
-    {
-        while (!GameStateManager.Instance.isGameOver)
-        {
-            Debug.Log("circle start attack ");
-            Attack();
-            yield return new WaitForSeconds(cooldown);
-        }
-    }
 }

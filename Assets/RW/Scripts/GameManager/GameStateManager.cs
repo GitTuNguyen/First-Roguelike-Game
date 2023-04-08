@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance;
 
-    public EnemySpawner enemySpawner;
-    public FireballController fireballController;
-    public PlayerController playerController;
-    public GameObject gameOverUI;
+    public List<GameObject> lootItemList;
     public bool isGameOver;
     public int enemyKilled;
     public float timer;
     private float timePlayed;
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,25 +32,30 @@ public class GameStateManager : MonoBehaviour
 
     public void GameOver()
     {
+        EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
         enemySpawner.DestroyAllEnemy();
+        ClearLootItem();
         isGameOver = true;
         StopGame();
-        gameOverUI.SetActive(true);
+        UIManager.Instance.gameOverUI.SetActive(true);
     }
 
     public void StopGame()
     {
         Time.timeScale = 0;
+        Debug.Log("Stop Game");
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        Debug.Log("Resume Game");
     }
 
     public void ResetGame()
     {
         ResumeGame();
+        ClearLootItem();
         isGameOver = false;
         Player player = FindObjectOfType<Player>();
         enemyKilled = 0;
@@ -63,5 +66,40 @@ public class GameStateManager : MonoBehaviour
     public void UpdateEnemyKilled()
     {
         enemyKilled++;
+        UIManager.Instance.UpdateAmountEnemyKilledText();
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void StartGame()
+    {
+        if (CharacterSetting.Instance.characterSelected != null)
+        {
+            ResumeGame();
+            SceneManager.LoadScene("Main");
+        }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    private void ClearLootItem()
+    {
+        if (lootItemList != null)
+        {
+            foreach(var item in lootItemList)
+            {
+                if (item != null)
+                {
+                    Destroy(item);
+                }                
+            }
+            lootItemList.Clear();
+        }
     }
 }

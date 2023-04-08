@@ -5,9 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class MagicCircleBehaviour : WeaponBehaviour
-{
-    [SerializeField]
-    private float attackDuration;
+{    
     [SerializeField]
     private float timeAttack;
     [SerializeField]
@@ -15,46 +13,58 @@ public class MagicCircleBehaviour : WeaponBehaviour
     [SerializeField]
     private float defaultRadius;
 
-    private bool isAttacking;
     public LayerMask layerMask;
     // Start is called before the first frame update
     protected override void Start()
     {
-        weaponController = FindObjectOfType<MagicCircleController>();        
+        weaponController = FindObjectOfType<MagicCircleController>();
         defaultRadius = transform.GetComponent<CircleCollider2D>().radius;
-        Physics2D.IgnoreLayerCollision(8, 10);
-        isAttacking = true;
-
+        Debug.Log("(start)weaponController.attackDuration = " + weaponController.attackDuration);
         base.Start();
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        radiusOfDamage = defaultRadius * weaponController.scale;
-        transform.localScale = new Vector3(weaponController.scale, weaponController.scale, weaponController.scale);
-        if (isAttacking)
-        {
-            Attack();
-        }
         base.Update();
+        radiusOfDamage = defaultRadius * weaponController.projectileScale;
+        transform.localScale = new Vector3(weaponController.projectileScale, weaponController.projectileScale, weaponController.projectileScale);                
     }
-    private void Attack()
+    public void Attack()
     {
         timeAttack = 0;
-        attackDuration = weaponController.stats[weaponController.level - 1].attackDuration;
-        Collider2D[] objectsInsideArea;
-        objectsInsideArea = Physics2D.OverlapCircleAll(transform.position, radiusOfDamage, layerMask);
-        while (timeAttack < attackDuration)
+        if (weaponController == null)
         {
-            Array.Clear(objectsInsideArea, 0, objectsInsideArea.Length);
-            objectsInsideArea = Physics2D.OverlapCircleAll(transform.position, radiusOfDamage, layerMask);
-            foreach (Collider2D collision in objectsInsideArea)
+            weaponController = FindObjectOfType<MagicCircleController>();
+        }
+        while (timeAttack < weaponController.attackDuration)
+        {            
+            Collider2D[] enemyInsideAttackArea = Physics2D.OverlapCircleAll(transform.position, radiusOfDamage, layerMask);
+            foreach (Collider2D collision in enemyInsideAttackArea)
             {
                 collision.GetComponent<Enemy>().LoseHP(dame);
+
             }
             timeAttack += Time.unscaledDeltaTime;
         }
-        isAttacking = false;
+    }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+
+    protected override void OnCollisionExit2D(Collision2D collision)
+    {
+        
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            Debug.Log("circle ignore collision with enemy");
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
     }
 }

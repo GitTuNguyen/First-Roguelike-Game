@@ -24,16 +24,20 @@ public class Enemy : MonoBehaviour
     protected float speed = 3;
     [SerializeField]
     protected float takeHitInterval;
-
+    [SerializeField]
+    protected float removeTimeDelay;
     protected Vector2 dir;
     protected float timeAfterTakeHit;
-    protected bool canTakeHit = true;
+    protected bool canTakeHit;
+    protected bool isDeath;
     protected EnemySpawner enemySpawner;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         timeAfterTakeHit = 0;
+        canTakeHit = true;
+        isDeath = false;
     }
 
     // Update is called once per frame
@@ -41,7 +45,7 @@ public class Enemy : MonoBehaviour
     {        
         Move();
         FlipSprite();
-        if (!canTakeHit)
+        if (!canTakeHit && !isDeath)
         {
             timeAfterTakeHit += Time.deltaTime;
             if (timeAfterTakeHit >= takeHitInterval)
@@ -54,7 +58,10 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Move()
     {
-        transform.Translate(dir * speed * Time.deltaTime);
+        if (!isDeath)
+        {
+            transform.Translate(dir * speed * Time.deltaTime);
+        }        
     }
 
 
@@ -67,12 +74,12 @@ public class Enemy : MonoBehaviour
 
     public void LoseHP(float dmg)
     {
-        if (canTakeHit)
+        if (canTakeHit && !isDeath)
         {
             AudioManager.Instance.PlaySFX("EnemyTakeHit");
+            ShowFloatingText(dmg);
             if (health > dmg)
-            {
-                ShowFloatingText(dmg);
+            {                
                 health -= dmg;
                 canTakeHit = false;
             }
@@ -85,8 +92,9 @@ public class Enemy : MonoBehaviour
     protected virtual void Death()
     {
         DropItem();
+        isDeath = true;
         enemySpawner.RemoveEnemyFromList(gameObject);
-        Destroy(gameObject);
+        Destroy(gameObject, removeTimeDelay);
     }
     protected void ShowFloatingText(float dame)
     {
@@ -117,7 +125,8 @@ public class Enemy : MonoBehaviour
         if (possibleDrop.Count > 0)
         {
             int index = Random.Range(0, possibleDrop.Count);
-            Instantiate(possibleDrop[index].itemPrefabs, this.transform.position, Quaternion.identity);
+            var lootItem = Instantiate(possibleDrop[index].itemPrefabs, this.transform.position, Quaternion.identity);
+            GameStateManager.Instance.lootItemList.Add(lootItem);
         }
     }
 }

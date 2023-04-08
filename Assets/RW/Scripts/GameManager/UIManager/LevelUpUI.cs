@@ -8,7 +8,6 @@ public class LevelUpUI : MonoBehaviour
     private Player player;
     public List<OptionUI> optionOptionUIList;
     public WeaponController weaponSelected;    
-
     public void SetLevelUp(List<WeaponController> selectableList)
     {
         for (int i = 0; i < optionOptionUIList.Count; i++)
@@ -39,8 +38,7 @@ public class LevelUpUI : MonoBehaviour
         {
             AudioManager.Instance.PlayPowerUpSFX();
             GameStateManager.Instance.ResumeGame();
-            player.UpgradeWeapon(weaponSelected);
-            this.gameObject.SetActive(false);
+            player.UpgradeWeapon(weaponSelected);            
         }        
     }
 }

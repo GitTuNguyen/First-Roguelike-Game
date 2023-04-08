@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d457a96a9c94755448845f425aace422, type: 3}
   m_Name: MagicCircle_Lv 3
   m_EditorClassIdentifier: 
-  projectileName: Magic Circle
   sprite: {fileID: -177195518, guid: a6f2c9288801db94b9e4358c20db2c43, type: 3}
   projectileLevel: 3
   maxLevel: 5
   projectileDMG: 8
   projectileSpeed: 0
   pierce: 0
-  amount: 0
+  amount: 1
   projectileInterval: 0
   projectileScale: 1.4
   attackDuration: 1.3

@@ -11,10 +11,10 @@ public class WeaponBehaviour : MonoBehaviour
     public WeaponController weaponController;
 
     protected virtual void Start()
-    {
+    {        
         speed = weaponController.speed;
         dame = weaponController.dame;
-        pierce = weaponController.stats[weaponController.level - 1].pierce;
+        pierce = weaponController.pierce;
     }
     protected virtual void Update()
     {
@@ -34,7 +34,7 @@ public class WeaponBehaviour : MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Projectiles") || collision.collider.CompareTag("Terrains") || collision.collider.CompareTag("LootItem"))
+        if (collision.collider.CompareTag("Projectiles"))
         {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }

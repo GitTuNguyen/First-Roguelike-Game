@@ -10,6 +10,7 @@ public class MapController : MonoBehaviour
     public LayerMask terrainMask;
     public GameObject currentChunk;
     PlayerController playerController;
+    Player player;
     [Header("Optimization")]
     public List<GameObject> spawnedChunks;
     private GameObject lastChunks;
@@ -23,6 +24,7 @@ public class MapController : MonoBehaviour
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -114,9 +116,21 @@ public class MapController : MonoBehaviour
 
     private void SpawnChunk()
     {
-        int rand = Random.Range(0, terrainChunks.Count);
-        lastChunks =  Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
-        spawnedChunks.Add(lastChunks);
+        bool isChunkOverlap = false;
+        foreach (GameObject chunk in spawnedChunks)
+        {
+            if (chunk.transform.position == noTerrainPosition)
+            {
+                isChunkOverlap = true;
+                break;
+            }
+        }
+        if (!isChunkOverlap)
+        {
+            int rand = Random.Range(0, terrainChunks.Count);
+            lastChunks = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
+            spawnedChunks.Add(lastChunks);
+        }        
     }
 
     private void ChunkOptimize()
@@ -131,7 +145,7 @@ public class MapController : MonoBehaviour
         }
         foreach (GameObject chunk in spawnedChunks)
         {
-            distance = Vector3.Distance(playerController.transform.position, chunk.transform.position);
+            distance = Vector3.Distance(player.transform.position, chunk.transform.position);
             if (distance > maxDistance)
             {
                 chunk.SetActive(false);

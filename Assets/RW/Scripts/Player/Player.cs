@@ -1,7 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
@@ -12,11 +13,7 @@ public class Player : MonoBehaviour
     public GameObject pickUpArea;
     private PlayerController playerController;
     [Header("UI")]
-    private InventoryUI inventoryUI;
     public HealthBar healthBar;
-    private ExpBar expBar;
-    private LevelUpUI levelUpUI;
-    private LevelUI playerLevelText;
     public GameObject floatingTextPrefabs;
     [Header("Stats")]
     public int playerLevel;
@@ -39,22 +36,12 @@ public class Player : MonoBehaviour
     private bool isTakeHitInterval;
     private float timeAfterTakeHit;
     private float remainingExp;
-    private void Awake()
-    {
-        levelUpUI = FindObjectOfType<LevelUpUI>();
-        if (levelUpUI != null)
-        {
-            levelUpUI.gameObject.SetActive(false);
-        }        
-    }
+    
     // Start is called before the first frame update
     void Start()
     {
         AudioManager.Instance.PlayMusic("ThemeMusic");
         playerController = FindObjectOfType<PlayerController>();
-        inventoryUI = FindObjectOfType<InventoryUI>();
-        expBar = FindObjectOfType<ExpBar>();
-        playerLevelText = FindObjectOfType<LevelUI>();
 
         SetCharacterDefaultStats();
         UpgradeWeapon(characterStats.defaultWeapon);
@@ -65,11 +52,11 @@ public class Player : MonoBehaviour
         remainingExp = 0;
         isTakeHitInterval = false;
 
-        playerLevelText.UpdateLeveTextlUI(playerLevel);
+        UIManager.Instance.UpdateLeveTextlUI(playerLevel);
         healthBar.SetMaxHeath(maxHealth);
         healthBar.SetCurrentHeath(currentHealth);
-        expBar.SetMaxEXP(maxExp);
-        expBar.SetCurrentEXP(currentExp);
+        UIManager.Instance.SetMaxEXP(maxExp);
+        UIManager.Instance.SetCurrentEXP(currentExp);
     }
 
     // Update is called once per frame
@@ -100,7 +87,7 @@ public class Player : MonoBehaviour
     }
     public void LoseHP(int dmg)
     {
-        if (!isTakeHitInterval)
+        if (!isTakeHitInterval && currentHealth != 0)
         {            
             if (currentHealth > dmg)
             {
@@ -136,13 +123,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    
+
+    public void PickUpChest()
+    {
+        Array.Find(AudioManager.Instance.musicSounds, musicSound => musicSound.name == "ThemeMusic").audioSource.Stop();
+        GameStateManager.Instance.StopGame();
+        UIManager.Instance.pickUpChestUI.gameObject.SetActive(true);
+    }
     public void GainHP(int health)
     {
         ShowFloatingText(health, false);
         if (currentHealth + health > maxHealth)
         {
             currentHealth = maxHealth;
-        } else
+        }
+        else
         {
             currentHealth += health;
         }
@@ -154,7 +150,7 @@ public class Player : MonoBehaviour
         {
             remainingExp = currentExp + exp - maxExp;
             currentExp = maxExp;
-            expBar.SetCurrentEXP(currentExp);
+            UIManager.Instance.SetCurrentEXP(currentExp);
             UpLevel();
         }
         else
@@ -162,34 +158,27 @@ public class Player : MonoBehaviour
             currentExp += exp;
             remainingExp = 0;
         }
-        expBar.SetCurrentEXP(currentExp);
-    }
-
-    public void GainChest()
-    {
-
+        UIManager.Instance.SetCurrentEXP(currentExp);
     }
     public void UpLevel()
     {
+        Debug.Log("level up " + playerLevel);
         GameStateManager.Instance.StopGame();
         AudioManager.Instance.PlaySFX("LevelUp");
         playerLevel++; 
         UpdateStatsLevelUp();
 
-        playerLevelText.UpdateLeveTextlUI(playerLevel);
+        UIManager.Instance.UpdateLeveTextlUI(playerLevel);
         healthBar.SetMaxHeath(maxHealth);
-        expBar.SetCurrentEXP(currentExp);
-        expBar.SetMaxEXP(maxExp);
-        levelUpUI.SetLevelUp(SelectableWeaponToUpgrade());
-        levelUpUI.gameObject.SetActive(true);
+        UIManager.Instance.SetCurrentEXP(currentExp);
+        UIManager.Instance.SetMaxEXP(maxExp);
+        UIManager.Instance.levelUpUI.SetLevelUp(SelectableWeaponToUpgrade());
+        UIManager.Instance.levelUpUI.gameObject.SetActive(true);
     }
-
-    
-
     private void Death()
     {
         currentHealth = 0;
-        AudioManager.Instance.PlaySFX("GameOver");
+        AudioManager.Instance.PlayMusic("GameOver");
         animationController.DeathAnimation();
         GameStateManager.Instance.GameOver();
     }
@@ -211,9 +200,10 @@ public class Player : MonoBehaviour
         {
             WeaponController newWeapon = Instantiate(weaponController, transform.position, Quaternion.identity);
             currentWeaponList.Add(newWeapon);
-            inventoryUI.UpdateInventoryUI(newWeapon.weaponSprite);
+            UIManager.Instance.UpdateInventoryUI(newWeapon.weaponSprite);
         }
         AudioManager.Instance.PlaySFX("PowerUp");
+        UIManager.Instance.levelUpUI.gameObject.SetActive(false);              
         if (remainingExp > 0)
         {
             GainEXP(remainingExp);
@@ -224,19 +214,19 @@ public class Player : MonoBehaviour
     {
         List<WeaponController> selectableWeapon = new List<WeaponController>();
         
-        int weaponsMaxLv = 0;
+        int amountWeaponsMaxLv = 0;
         foreach (WeaponController weapon in currentWeaponList)
         {
             if (weapon.level == weapon.maxLevel)
             {
-                weaponsMaxLv++;
+                amountWeaponsMaxLv++;
             }
         }
-        Debug.Log("weaponsMaxLv " + weaponsMaxLv);
+        Debug.Log("amountWeaponsMaxLv " + amountWeaponsMaxLv);
         int numberSelectable;
-        if (maxNumberOfWeapon - weaponsMaxLv < amountWeaponSelectableWhenLvUp)
+        if (maxNumberOfWeapon - amountWeaponsMaxLv < amountWeaponSelectableWhenLvUp)
         {
-            numberSelectable = maxNumberOfWeapon - weaponsMaxLv;
+            numberSelectable = maxNumberOfWeapon - amountWeaponsMaxLv;
             if (numberSelectable > 0)
             {
                 if (currentWeaponList.Count == maxNumberOfWeapon)
@@ -322,9 +312,9 @@ public class Player : MonoBehaviour
     private void UpdateStatsLevelUp()
     {
         float tempMaxHealth = maxHealth;
-        maxHealth *= characterStats.healthForLevelUpStep;
+        maxHealth += characterStats.healthForLevelUpStep;
         currentHealth = (currentHealth / tempMaxHealth) * maxHealth;
-        maxExp *= characterStats.expForLevelUpStep;
+        maxExp += characterStats.expForLevelUpStep;
         currentExp = 0;
     }
     public void ResetGame()
@@ -338,12 +328,12 @@ public class Player : MonoBehaviour
 
         SetCharacterDefaultStats();
 
-        inventoryUI.ResetGame();
-        playerLevelText.UpdateLeveTextlUI(playerLevel);
+        UIManager.Instance.ResetInventory();
+        UIManager.Instance.UpdateLeveTextlUI(playerLevel);
         healthBar.SetMaxHeath(maxHealth);
         healthBar.SetCurrentHeath(currentHealth);
-        expBar.SetMaxEXP(maxExp);
-        expBar.SetCurrentEXP(0);
+        UIManager.Instance.SetMaxEXP(maxExp);
+        UIManager.Instance.SetCurrentEXP(0);
 
         UpgradeWeapon(characterStats.defaultWeapon);
         animationController.ResetGame();

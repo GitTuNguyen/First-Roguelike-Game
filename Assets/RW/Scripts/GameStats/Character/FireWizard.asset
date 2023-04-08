@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: FireWizard
   defaultWeapon: {fileID: 3169779986444597199, guid: c584a1fb7cfd510498f2ec7008c06f2b, type: 3}
-  defaultSpeed: 5
   defaultpickUpRadius: 1
+  defaultSpeed: 4
   defaultMaxHealth: 100
-  healthForLevelUpStep: 1.3
+  healthForLevelUpStep: 15
   defaultMaxExp: 100
-  expForLevelUpStep: 1.1
+  expForLevelUpStep: 20

@@ -20,6 +20,7 @@ public class Monster : Enemy
     // Update is called once per frame
     protected override void Update()
     {
+        if (player == null) return;
         dir = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y).normalized;
         base.Update();
     }

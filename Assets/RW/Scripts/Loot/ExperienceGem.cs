@@ -10,19 +10,14 @@ public class ExperienceGem : MonoBehaviour
     [SerializeField]
     private float speed;
 
-    private Player player;
     //private bool isPickedUp;
-    private void Start()
-    {
-        player = FindObjectOfType<Player>();
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("PickUpArea"))
         {
-            player.GainEXP(experiences);
+            FindObjectOfType<Player>().GainEXP(experiences);
             AudioManager.Instance.PlaySFX("PickUpGem");
             Destroy(gameObject);
         }

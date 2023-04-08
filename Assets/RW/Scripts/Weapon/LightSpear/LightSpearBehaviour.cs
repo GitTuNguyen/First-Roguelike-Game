@@ -19,11 +19,6 @@ public class LightSpearBehaviour : WeaponBehaviour
         Destroy(gameObject, weaponController.timeToDestroy);
     }
 
-    protected override void Update()
-    {
-        base.Update();
-    }
-
     protected override void Move()
     {
         if (!GameStateManager.Instance.isGameOver)
