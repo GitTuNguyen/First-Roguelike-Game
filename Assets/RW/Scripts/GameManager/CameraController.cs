@@ -1,15 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Player player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Player player;    
 
     // Update is called once per frame
     void Update()
@@ -17,8 +10,7 @@ public class CameraController : MonoBehaviour
         if (player == null)
         {
             player = FindObjectOfType<Player>();
-        }
-        if (player != null)
+        } else
         {
             transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
         }        

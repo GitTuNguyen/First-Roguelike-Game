@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class MagicCircleBehaviour : WeaponBehaviour
 {    
@@ -51,7 +47,10 @@ public class MagicCircleBehaviour : WeaponBehaviour
 
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<Enemy>().LoseHP(dame);
+        }
     }
 
     protected override void OnCollisionExit2D(Collision2D collision)
@@ -63,7 +62,6 @@ public class MagicCircleBehaviour : WeaponBehaviour
     {
         if (collision.collider.CompareTag("Enemy"))
         {
-            Debug.Log("circle ignore collision with enemy");
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
     }

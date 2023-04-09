@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 
-public class SelectCharacter : MonoBehaviour
+public class CharacterOption : MonoBehaviour
 {
     public GameObject characterPrefabs;
     public Image characterImage;
-    public Image weaponDefaultImage;
-    // Start is called before the first frame update
-    void Start()
-    {        
+    public Image weaponDefaultImage;    
+
+    public void SetCharacter(GameObject character)
+    {
+        characterPrefabs = character;
         characterImage.sprite = characterPrefabs.GetComponent<SpriteRenderer>().sprite;
         weaponDefaultImage.sprite = characterPrefabs.GetComponent<Player>().characterStats.defaultWeapon.GetComponent<WeaponController>().weaponSprite;
     }

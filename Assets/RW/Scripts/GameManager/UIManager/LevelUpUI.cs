@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class LevelUpUI : MonoBehaviour
@@ -36,7 +34,7 @@ public class LevelUpUI : MonoBehaviour
         } 
         if (weaponSelected != null)
         {
-            AudioManager.Instance.PlayPowerUpSFX();
+            AudioManager.Instance.PlaySFX("PowerUp");
             GameStateManager.Instance.ResumeGame();
             player.UpgradeWeapon(weaponSelected);            
         }        

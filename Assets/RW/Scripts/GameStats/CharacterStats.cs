@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "Character Stats")]
 public class CharacterStats : ScriptableObject
@@ -15,5 +13,5 @@ public class CharacterStats : ScriptableObject
 
     public float defaultMaxExp;
     public float expForLevelUpStep;
-
+    public string characterInfo;
 }

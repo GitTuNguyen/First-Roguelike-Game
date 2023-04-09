@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.Audio;
-using Newtonsoft.Json.Linq;
 
 [System.Serializable]
 public class AudioSetting
@@ -103,9 +100,5 @@ public class AudioManager : MonoBehaviour
     {
         PlaySFX("ButtonOut");
     }
-
-    public void PlayPowerUpSFX()
-    {
-        PlaySFX("PowerUp");
-    }
+        
 }
