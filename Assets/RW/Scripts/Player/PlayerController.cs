@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     public Vector2 frontdDir;
     public Vector2 moveDir;
-
+    public CameraController cameraController;
     private CharacterAnimationController characterAnimatorController;
 
     private void Awake()
@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject character = Instantiate(CharacterSetting.Instance.characterSelected, transform.position, Quaternion.identity, gameObject.transform);
         characterAnimatorController = character.GetComponent<CharacterAnimationController>();
+        cameraController.player = character;
     }
 
     // Update is called once per frame

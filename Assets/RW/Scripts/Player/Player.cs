@@ -80,10 +80,8 @@ public class Player : MonoBehaviour
     
 
     private void Move()
-    {        
-        {
-            transform.Translate(playerController.moveDir * playerSpeed * Time.deltaTime);
-        }
+    {
+        transform.Translate(playerController.moveDir * playerSpeed * Time.deltaTime);
     }
     public void LoseHP(int dmg)
     {

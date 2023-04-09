@@ -28,6 +28,22 @@ public class GameStateManager : MonoBehaviour
     void Update()
     {
         timer = Time.timeSinceLevelLoad - timePlayed;
+        if (SceneManager.GetActiveScene().name == "Main")
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (Time.timeScale == 0)
+                {
+                    ResumeGame();
+                    UIManager.Instance.pauseBoard.gameObject.SetActive(false);
+                } else
+                {
+                    StopGame();
+                    UIManager.Instance.pauseBoard.gameObject.SetActive(true);
+                }
+                
+            }
+        }        
     }
 
     public void GameOver()
@@ -59,6 +75,7 @@ public class GameStateManager : MonoBehaviour
         isGameOver = false;
         Player player = FindObjectOfType<Player>();
         enemyKilled = 0;
+        UIManager.Instance.UpdateAmountEnemyKilledText();
         timePlayed += timer;
         player.ResetGame();
     }

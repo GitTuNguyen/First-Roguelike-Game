@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public PickUpChest pickUpChestUI;
     public LevelUpUI levelUpUI;
     public GameObject gameOverUI;
+    public GameObject pauseBoard;
     [Header("UI Elements")]
     public TextMeshProUGUI amountEnemyKilled;
     public TextMeshProUGUI timerText;
