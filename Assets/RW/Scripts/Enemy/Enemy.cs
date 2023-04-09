@@ -15,7 +15,17 @@ public class Enemy : MonoBehaviour
 
     public List<LootItems> itemsList;
     public GameObject floatingTextPrefabs;
-    public SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
+
+    [Header("Take Hit Flash Effect")]
+    [SerializeField]
+    protected Material originalMaterial;
+    [SerializeField]
+    protected Material flashMaterial;
+    [SerializeField]
+    protected float flashDuration;
+    [SerializeField]
+    protected Coroutine flashCoroutine;
 
     [Header("Enemy Stats")]
     [SerializeField]
@@ -26,6 +36,8 @@ public class Enemy : MonoBehaviour
     protected float takeHitInterval;
     [SerializeField]
     protected float removeTimeDelay;
+    
+    //
     protected Vector2 dir;
     protected float timeAfterTakeHit;
     protected bool canTakeHit;
@@ -38,6 +50,9 @@ public class Enemy : MonoBehaviour
         timeAfterTakeHit = 0;
         canTakeHit = true;
         isDeath = false;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalMaterial = spriteRenderer.material;
+        flashMaterial = new Material(flashMaterial);
     }
 
     // Update is called once per frame
@@ -78,6 +93,7 @@ public class Enemy : MonoBehaviour
         {
             AudioManager.Instance.PlaySFX("EnemyTakeHit");
             ShowFloatingText(dmg);
+            FlashEffect();
             if (health > dmg)
             {                
                 health -= dmg;
@@ -109,6 +125,23 @@ public class Enemy : MonoBehaviour
     protected virtual void FlipSprite()
     {
         
+    }
+
+    protected void FlashEffect()
+    {
+        if (flashCoroutine != null)
+        {
+            StopCoroutine(flashCoroutine);
+        }
+        flashCoroutine = StartCoroutine(FlashCoroutine());
+    }
+
+    protected IEnumerator FlashCoroutine()
+    {
+        spriteRenderer.material = flashMaterial;
+        yield return new WaitForSeconds(flashDuration);
+        spriteRenderer.material = originalMaterial;
+        flashCoroutine = null;
     }
 
     protected void DropItem()

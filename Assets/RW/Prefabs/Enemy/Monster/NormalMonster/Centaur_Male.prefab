@@ -62,11 +62,13 @@ MonoBehaviour:
     itemPrefabs: {fileID: 5691007620608654421, guid: dc357dd01f593a64d92a452c19cdcf2e, type: 3}
     dropRate: 0
   floatingTextPrefabs: {fileID: 2439674890540229241, guid: 8dec75385a5550648a87e984a10421d0, type: 3}
-  spriteRenderer: {fileID: 7341157604472048888}
   health: 10
   speed: 1
   takeHitInterval: 0.5
   removeTimeDelay: 0.5
+  originalMaterial: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: eaf1b410c141d1344b147d0653d084ec, type: 2}
+  flashDuration: 0.15
   monsterDame: 5
 --- !u!212 &7341157604472048888
 SpriteRenderer:
