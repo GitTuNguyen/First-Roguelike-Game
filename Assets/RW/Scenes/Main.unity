@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frontdDir: {x: 0, y: 0}
   moveDir: {x: 0, y: 0}
+  cameraController: {fileID: 1666922115}
 --- !u!1 &95494654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,7 +1357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 318320133}
   m_Layer: 5
-  m_Name: PauseBoardd
+  m_Name: PauseBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1380,8 +1381,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.36259258, y: 0}
   m_AnchorMax: {x: 0.6372223, y: 1}
-  m_AnchoredPosition: {x: 0.5, y: 0}
-  m_SizeDelta: {x: -2.0245056, y: 0}
+  m_AnchoredPosition: {x: -0.25613403, y: 0}
+  m_SizeDelta: {x: -0.5122528, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &319124770
 GameObject:
@@ -8624,6 +8625,7 @@ MonoBehaviour:
   pickUpChestUI: {fileID: 1419262034}
   levelUpUI: {fileID: 418839511}
   gameOverUI: {fileID: 234397315}
+  pauseBoard: {fileID: 318320132}
   amountEnemyKilled: {fileID: 1276755336}
   timerText: {fileID: 410412228}
   expSlider: {fileID: 1451848226}
