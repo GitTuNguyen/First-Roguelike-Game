@@ -158,5 +158,5 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  baseArea: 0
+  baseArea: 0.5
   currentArea: 0
