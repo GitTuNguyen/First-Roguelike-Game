@@ -2,23 +2,12 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
-    private Player player;
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        player = FindObjectOfType<Player>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("PickUpArea"))
+        if (collision.collider.CompareTag("Player"))
         {
-            if (player == null)
-            {
-                player = FindObjectOfType<Player>();
-            }
             AudioManager.Instance.PlaySFX("PickUpChicken");
-            player.PickUpChest();
+            collision.gameObject.GetComponent<Player>().PickUpChest();
             Destroy(gameObject);
         }
     }
