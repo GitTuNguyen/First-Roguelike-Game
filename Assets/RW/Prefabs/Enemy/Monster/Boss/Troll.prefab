@@ -49,28 +49,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsList:
   - name: White Gem
-    itemPrefabs: {fileID: 5691007620608654421, guid: 197342ea8f12de341891262f55a63bc6, type: 3}
+    itemPrefabs: {fileID: 8583979171179233459, guid: e58d013243440574893301b2e962fd10, type: 3}
     dropRate: 0
   - name: Green Gem
-    itemPrefabs: {fileID: 5691007620608654421, guid: a4d99e7dcaa602a4aa0c808d52d2cab3, type: 3}
+    itemPrefabs: {fileID: 8428336571885462462, guid: 328fe93b1e614b2418e93389242c86ec, type: 3}
     dropRate: 0
   - name: Blue Gem
-    itemPrefabs: {fileID: 5691007620608654421, guid: 1104c158c93dc294599a8d527f21e4b7, type: 3}
+    itemPrefabs: {fileID: 8559550673067896511, guid: e030ae425f9dc6046babc0566601c953, type: 3}
     dropRate: 0
   - name: Red Gem
-    itemPrefabs: {fileID: 5691007620608654421, guid: dc357dd01f593a64d92a452c19cdcf2e, type: 3}
+    itemPrefabs: {fileID: 1436479077793310101, guid: 5c73de0ef5c09a144b045f7bed152b8c, type: 3}
     dropRate: 100
   - name: Chest
     itemPrefabs: {fileID: 3148571374853397368, guid: 6be429fb71775e744b317516afef7acd, type: 3}
     dropRate: 100
   floatingTextPrefabs: {fileID: 2439674890540229241, guid: 8dec75385a5550648a87e984a10421d0, type: 3}
+  originalMaterial: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: eaf1b410c141d1344b147d0653d084ec, type: 2}
+  flashDuration: 0.15
   health: 50
   speed: 2.5
   takeHitInterval: 0.5
   removeTimeDelay: 0.5
-  originalMaterial: {fileID: 0}
-  flashMaterial: {fileID: 2100000, guid: eaf1b410c141d1344b147d0653d084ec, type: 2}
-  flashDuration: 0.15
   monsterDame: 12
 --- !u!212 &5546131965660645051
 SpriteRenderer:

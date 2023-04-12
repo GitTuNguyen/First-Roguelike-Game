@@ -2,19 +2,13 @@ using UnityEngine;
 
 public class ChickenLoot : MonoBehaviour
 {
-    private Player player;
     public int health;
-    // Start is called before the first frame update
-    void Start()
+    
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        player = FindObjectOfType<Player>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("PickUpArea"))
+        if (collision.collider.CompareTag("Player"))
         {
-            player.GainHP(health);
+            collision.gameObject.GetComponent<Player>().GainHP(health);
             AudioManager.Instance.PlaySFX("PickUpChicken");
             Destroy(gameObject);
         }

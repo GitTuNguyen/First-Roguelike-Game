@@ -49,20 +49,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsList:
-  - name: BBQChicken
-    itemPrefabs: {fileID: 5691007620608654421, guid: 86e9e0e79aab42d49bdedac7ba02d7f1, type: 3}
+  - name: Roasted Chicken
+    itemPrefabs: {fileID: 8128651019836059927, guid: 4050ff78201df1b4899256512db44a23, type: 3}
     dropRate: 25
   - name: ChikenThigh
-    itemPrefabs: {fileID: 3309894887894344511, guid: b468b778d7e23b949b8611b3bcc93e62, type: 3}
+    itemPrefabs: {fileID: 1123948449343224741, guid: 36c59ce737ed33646bea41421455873d, type: 3}
     dropRate: 100
   floatingTextPrefabs: {fileID: 2439674890540229241, guid: 8dec75385a5550648a87e984a10421d0, type: 3}
+  originalMaterial: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: eaf1b410c141d1344b147d0653d084ec, type: 2}
+  flashDuration: 0.15
   health: 15
   speed: 1
   takeHitInterval: 0.5
   removeTimeDelay: 0.5
-  originalMaterial: {fileID: 0}
-  flashMaterial: {fileID: 2100000, guid: eaf1b410c141d1344b147d0653d084ec, type: 2}
-  flashDuration: 0.15
   timeMove: 0
   timeToChangeDir: 3
 --- !u!212 &5344526485380698577
