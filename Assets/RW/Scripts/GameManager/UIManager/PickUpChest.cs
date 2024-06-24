@@ -8,6 +8,8 @@ public class PickUpChest : MonoBehaviour
     public Image weaponImage;
     public float timeToChangeWeaponImage;
     public float timeAfterChangeImage;
+    public float timeOpenChest = 3f;
+    public float timeAfterOpenChest;
     public bool isOpened;
     public GameObject continueButton;
     private AudioSource openChestMusic;
@@ -18,6 +20,7 @@ public class PickUpChest : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         timeAfterChangeImage = 0;
+        timeAfterOpenChest = 0;
         isOpened = false;
     }
 
@@ -25,9 +28,10 @@ public class PickUpChest : MonoBehaviour
     {
         if(openChestMusic != null && openChestMusic.name == "OpenChest")
         {
-            if(openChestMusic.isPlaying)
+            if(openChestMusic.isPlaying && timeAfterOpenChest < timeOpenChest)
             {
                 timeAfterChangeImage += Time.unscaledDeltaTime;
+                timeAfterOpenChest += Time.unscaledDeltaTime;
                 Debug.Log("timeAfterChageImage: " + timeAfterChangeImage);
 
                 if (timeAfterChangeImage >= timeToChangeWeaponImage)
@@ -39,6 +43,7 @@ public class PickUpChest : MonoBehaviour
             }
             else
             {
+                openChestMusic.Stop();
                 if (upgradeWeapon == null && upgradeableWeaponList.Count > 0)
                 {
                     int rand = Random.Range(0, upgradeableWeaponList.Count);
@@ -71,7 +76,14 @@ public class PickUpChest : MonoBehaviour
             }
             weaponImage.gameObject.SetActive(true);
             isOpened = true;
+        } else {
+            Skip();
         }
+    }
+
+    private void Skip()
+    {
+        timeAfterOpenChest += timeOpenChest;
     }
     public void ContinueGame()
     {
@@ -86,6 +98,7 @@ public class PickUpChest : MonoBehaviour
             upgradeWeapon = null;
             upgradeableWeaponList.Clear();
             isOpened = false;
+            timeAfterOpenChest = 0;
         }
         
     }
