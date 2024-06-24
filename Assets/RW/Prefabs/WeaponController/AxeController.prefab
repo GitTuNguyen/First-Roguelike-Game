@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4498423193175938020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4498423193175938019}
+  - component: {fileID: -7369035749207480916}
+  m_Layer: 0
+  m_Name: AxeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4498423193175938019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4498423193175938020}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7369035749207480916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4498423193175938020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b134935d02250c4bade962bf3755433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+  - {fileID: 11400000, guid: b392056371888bd4bb0ac583727f562e, type: 2}
+  - {fileID: 11400000, guid: f5c206c32d1e13e4c83c1f84ad204e8d, type: 2}
+  - {fileID: 11400000, guid: 90cabf9b786b19945bf914fc50bbb4c2, type: 2}
+  - {fileID: 11400000, guid: 18b9f4aa0d1692642969dd6a85638f74, type: 2}
+  - {fileID: 11400000, guid: 5eaed308a1e02a54b8b8437e61351644, type: 2}
+  projectileName: Axe
+  weaponSprite: {fileID: 21300000, guid: 306e57b1ce8c4fd4284cf76d017d97a9, type: 3}
+  prefab: {fileID: 572321869634064016, guid: 2819a68b46a18bd4e8a0f18bb5a393ef, type: 3}
+  level: 0
+  maxLevel: 0
+  dame: 0
+  speed: 0
+  pierce: 0
+  amount: 0
+  projectileInterval: 0
+  projectileScale: 0
+  attackDuration: 0
+  cooldown: 0
+  timeToDestroy: 0
+  projectileSpawnPosition: {x: 0, y: 0, z: 0}

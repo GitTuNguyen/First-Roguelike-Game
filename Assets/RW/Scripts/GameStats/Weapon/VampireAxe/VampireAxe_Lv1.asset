@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d457a96a9c94755448845f425aace422, type: 3}
+  m_Name: VampireAxe_Lv1
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 3cfbc0d264f543440bdd4f14b029d8b4, type: 3}
+  projectileLevel: 1
+  maxLevel: 5
+  projectileDMG: 5
+  projectileSpeed: 20
+  pierce: 1
+  amount: 3
+  projectileInterval: 0
+  projectileScale: 1
+  radius: 1.5
+  attackDuration: 1.5
+  cooldown: 7
+  timeToDestroy: 5
+  description: Summon 3 blood ball around player

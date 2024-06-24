@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f70c4c1c9ca44342828fac00c4b5f4f, type: 3}
+  m_Name: Vampire Queen
+  m_EditorClassIdentifier: 
+  characterName: Viking
+  defaultWeapon: {fileID: 4489077403564290992, guid: 0c881e5d549d2b445a40bd93d99da78d, type: 3}
+  defaultpickUpRadius: 1
+  defaultSpeed: 6
+  defaultMaxHealth: 75
+  healthForLevelUpStep: 15
+  defaultMaxExp: 100
+  expForLevelUpStep: 20
+  characterInfo: Low HP, more speed. Increases healing effect
