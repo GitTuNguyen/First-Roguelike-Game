@@ -3,7 +3,7 @@ guid: 992962bdb1ca4f742bc92dfcc969c0bc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,33 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -2227,109 +2259,108 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SmoothdungeonTileset_61: 2143001338
-      SmoothdungeonTileset_96: 1173436157
-      SmoothdungeonTileset_75: 815044678
-      SmoothdungeonTileset_48: -254065431
-      SmoothdungeonTileset_82: 2077217437
-      SmoothdungeonTileset_91: -40541019
-      SmoothdungeonTileset_35: -163405417
-      SmoothdungeonTileset_46: -400533337
-      SmoothdungeonTileset_98: 1820367644
-      SmoothdungeonTileset_73: 569821455
-      SmoothdungeonTileset_60: 447994934
-      SmoothdungeonTileset_57: 2131843443
-      SmoothdungeonTileset_33: 668481242
-      SmoothdungeonTileset_4: -96618479
-      SmoothdungeonTileset_21: 1301186565
-      SmoothdungeonTileset_97: 1271020345
-      SmoothdungeonTileset_19: -398827064
-      SmoothdungeonTileset_3: 274787710
-      SmoothdungeonTileset_50: 853678930
-      SmoothdungeonTileset_71: 592179874
-      SmoothdungeonTileset_86: 327707053
-      SmoothdungeonTileset_24: -693667061
-      SmoothdungeonTileset_52: 441967877
-      SmoothdungeonTileset_38: -2120088008
-      SmoothdungeonTileset_41: 1095112905
-      SmoothdungeonTileset_56: 652444235
-      SmoothdungeonTileset_42: 1497801092
-      SmoothdungeonTileset_49: 1311182511
-      SmoothdungeonTileset_5: -167986797
-      SmoothdungeonTileset_99: 958375155
-      SmoothdungeonTileset_27: 1376221385
-      SmoothdungeonTileset_20: -1249342239
-      SmoothdungeonTileset_62: -995821301
-      SmoothdungeonTileset_37: -91189850
-      SmoothdungeonTileset_67: 621540686
-      SmoothdungeonTileset_95: -1285028559
-      SmoothdungeonTileset_84: -192218342
-      SmoothdungeonTileset_26: 243489257
-      SmoothdungeonTileset_28: 1668812312
-      SmoothdungeonTileset_16: 387219654
-      SmoothdungeonTileset_92: 1712249428
-      SmoothdungeonTileset_81: -546243650
+      SmoothdungeonTileset_0: -467879667
+      SmoothdungeonTileset_1: 1940277398
       SmoothdungeonTileset_10: -887391137
-      SmoothdungeonTileset_9: -461254908
-      SmoothdungeonTileset_22: 1729292881
-      SmoothdungeonTileset_2: 534837741
-      SmoothdungeonTileset_30: 937227294
-      SmoothdungeonTileset_51: 19383746
-      SmoothdungeonTileset_58: 1615934966
+      SmoothdungeonTileset_11: 124663508
       SmoothdungeonTileset_12: -564124715
       SmoothdungeonTileset_13: -2029608259
-      SmoothdungeonTileset_94: 8485252
-      SmoothdungeonTileset_83: -1704488327
-      SmoothdungeonTileset_78: 1394910171
-      SmoothdungeonTileset_15: -1414966126
-      SmoothdungeonTileset_77: -1271202331
-      SmoothdungeonTileset_93: -1890173371
-      SmoothdungeonTileset_79: -1751018151
-      SmoothdungeonTileset_29: -4752918
-      SmoothdungeonTileset_39: 48269818
-      SmoothdungeonTileset_89: -1957204855
-      SmoothdungeonTileset_65: -1821279495
-      SmoothdungeonTileset_76: -1961711057
-      SmoothdungeonTileset_55: 742548103
-      SmoothdungeonTileset_32: 604510412
-      SmoothdungeonTileset_70: -753329856
-      SmoothdungeonTileset_43: -420266291
-      SmoothdungeonTileset_80: -1744364882
-      SmoothdungeonTileset_85: -626713788
-      SmoothdungeonTileset_69: 1793238776
-      SmoothdungeonTileset_87: -14190176
-      SmoothdungeonTileset_11: 124663508
       SmoothdungeonTileset_14: -614343691
+      SmoothdungeonTileset_15: -1414966126
+      SmoothdungeonTileset_16: 387219654
       SmoothdungeonTileset_17: -1342439663
-      SmoothdungeonTileset_66: 229928311
-      SmoothdungeonTileset_54: 385642257
-      SmoothdungeonTileset_1: 1940277398
-      SmoothdungeonTileset_88: 1797098564
-      SmoothdungeonTileset_8: 2062942537
-      SmoothdungeonTileset_45: -163595406
-      SmoothdungeonTileset_36: 1780837049
-      SmoothdungeonTileset_0: -467879667
-      SmoothdungeonTileset_47: 1756467577
-      SmoothdungeonTileset_68: 877155371
-      SmoothdungeonTileset_31: -1114730260
-      SmoothdungeonTileset_63: -435963428
-      SmoothdungeonTileset_6: -1335974896
-      SmoothdungeonTileset_74: 1278373785
-      SmoothdungeonTileset_59: 2136135440
-      SmoothdungeonTileset_90: 1857471386
-      SmoothdungeonTileset_53: 1994352873
-      SmoothdungeonTileset_7: 1618309388
-      SmoothdungeonTileset_64: -1072100984
-      SmoothdungeonTileset_72: 913629021
-      SmoothdungeonTileset_23: -1306123585
-      SmoothdungeonTileset_25: -1273657613
-      SmoothdungeonTileset_34: -407086443
-      SmoothdungeonTileset_44: 2032981921
       SmoothdungeonTileset_18: 6243185
+      SmoothdungeonTileset_19: -398827064
+      SmoothdungeonTileset_2: 534837741
+      SmoothdungeonTileset_20: -1249342239
+      SmoothdungeonTileset_21: 1301186565
+      SmoothdungeonTileset_22: 1729292881
+      SmoothdungeonTileset_23: -1306123585
+      SmoothdungeonTileset_24: -693667061
+      SmoothdungeonTileset_25: -1273657613
+      SmoothdungeonTileset_26: 243489257
+      SmoothdungeonTileset_27: 1376221385
+      SmoothdungeonTileset_28: 1668812312
+      SmoothdungeonTileset_29: -4752918
+      SmoothdungeonTileset_3: 274787710
+      SmoothdungeonTileset_30: 937227294
+      SmoothdungeonTileset_31: -1114730260
+      SmoothdungeonTileset_32: 604510412
+      SmoothdungeonTileset_33: 668481242
+      SmoothdungeonTileset_34: -407086443
+      SmoothdungeonTileset_35: -163405417
+      SmoothdungeonTileset_36: 1780837049
+      SmoothdungeonTileset_37: -91189850
+      SmoothdungeonTileset_38: -2120088008
+      SmoothdungeonTileset_39: 48269818
+      SmoothdungeonTileset_4: -96618479
       SmoothdungeonTileset_40: -1506416351
-  spritePackingTag: 
+      SmoothdungeonTileset_41: 1095112905
+      SmoothdungeonTileset_42: 1497801092
+      SmoothdungeonTileset_43: -420266291
+      SmoothdungeonTileset_44: 2032981921
+      SmoothdungeonTileset_45: -163595406
+      SmoothdungeonTileset_46: -400533337
+      SmoothdungeonTileset_47: 1756467577
+      SmoothdungeonTileset_48: -254065431
+      SmoothdungeonTileset_49: 1311182511
+      SmoothdungeonTileset_5: -167986797
+      SmoothdungeonTileset_50: 853678930
+      SmoothdungeonTileset_51: 19383746
+      SmoothdungeonTileset_52: 441967877
+      SmoothdungeonTileset_53: 1994352873
+      SmoothdungeonTileset_54: 385642257
+      SmoothdungeonTileset_55: 742548103
+      SmoothdungeonTileset_56: 652444235
+      SmoothdungeonTileset_57: 2131843443
+      SmoothdungeonTileset_58: 1615934966
+      SmoothdungeonTileset_59: 2136135440
+      SmoothdungeonTileset_6: -1335974896
+      SmoothdungeonTileset_60: 447994934
+      SmoothdungeonTileset_61: 2143001338
+      SmoothdungeonTileset_62: -995821301
+      SmoothdungeonTileset_63: -435963428
+      SmoothdungeonTileset_64: -1072100984
+      SmoothdungeonTileset_65: -1821279495
+      SmoothdungeonTileset_66: 229928311
+      SmoothdungeonTileset_67: 621540686
+      SmoothdungeonTileset_68: 877155371
+      SmoothdungeonTileset_69: 1793238776
+      SmoothdungeonTileset_7: 1618309388
+      SmoothdungeonTileset_70: -753329856
+      SmoothdungeonTileset_71: 592179874
+      SmoothdungeonTileset_72: 913629021
+      SmoothdungeonTileset_73: 569821455
+      SmoothdungeonTileset_74: 1278373785
+      SmoothdungeonTileset_75: 815044678
+      SmoothdungeonTileset_76: -1961711057
+      SmoothdungeonTileset_77: -1271202331
+      SmoothdungeonTileset_78: 1394910171
+      SmoothdungeonTileset_79: -1751018151
+      SmoothdungeonTileset_8: 2062942537
+      SmoothdungeonTileset_80: -1744364882
+      SmoothdungeonTileset_81: -546243650
+      SmoothdungeonTileset_82: 2077217437
+      SmoothdungeonTileset_83: -1704488327
+      SmoothdungeonTileset_84: -192218342
+      SmoothdungeonTileset_85: -626713788
+      SmoothdungeonTileset_86: 327707053
+      SmoothdungeonTileset_87: -14190176
+      SmoothdungeonTileset_88: 1797098564
+      SmoothdungeonTileset_89: -1957204855
+      SmoothdungeonTileset_9: -461254908
+      SmoothdungeonTileset_90: 1857471386
+      SmoothdungeonTileset_91: -40541019
+      SmoothdungeonTileset_92: 1712249428
+      SmoothdungeonTileset_93: -1890173371
+      SmoothdungeonTileset_94: 8485252
+      SmoothdungeonTileset_95: -1285028559
+      SmoothdungeonTileset_96: 1173436157
+      SmoothdungeonTileset_97: 1271020345
+      SmoothdungeonTileset_98: 1820367644
+      SmoothdungeonTileset_99: 958375155
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

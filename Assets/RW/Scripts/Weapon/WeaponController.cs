@@ -19,6 +19,7 @@ public class WeaponController : MonoBehaviour
     public float attackDuration;
     public float cooldown;
     public float timeToDestroy;
+    public float radius;
     public Vector3 projectileSpawnPosition;
     protected virtual void Start()
     {
@@ -39,6 +40,7 @@ public class WeaponController : MonoBehaviour
         attackDuration = stats[level - 1].attackDuration;
         cooldown = stats[level - 1].cooldown;
         timeToDestroy = stats[level - 1].timeToDestroy;
+        radius = stats[level - 1].radius;
     }
 
     public string getDescriptionNextLevel()

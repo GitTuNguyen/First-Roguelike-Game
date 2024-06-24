@@ -13,6 +13,7 @@ public class WeaponStats : ScriptableObject
     public int amount;
     public float projectileInterval;
     public float projectileScale;
+    public float radius;
     public float attackDuration;
     public float cooldown;
     public float timeToDestroy;

@@ -3,7 +3,7 @@ guid: a3dea28f7869eb14cbf6b1eb6f91a637
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -33,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,33 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -820,42 +852,41 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      LightSpear_64x64_4: 417778545
+      LightSpear_64x64_0: -1826151404
       LightSpear_64x64_1: 2087544538
+      LightSpear_64x64_10: 1819883485
+      LightSpear_64x64_11: 31742103
+      LightSpear_64x64_12: 55831898
+      LightSpear_64x64_13: -130082379
+      LightSpear_64x64_14: 1644021176
       LightSpear_64x64_15: -562136506
-      LightSpear_64x64_30: -2048033219
+      LightSpear_64x64_16: 983231366
+      LightSpear_64x64_17: 69151731
       LightSpear_64x64_18: 1019912893
+      LightSpear_64x64_19: 1446147030
+      LightSpear_64x64_2: -686054657
+      LightSpear_64x64_20: -1023509187
+      LightSpear_64x64_21: -1598573505
+      LightSpear_64x64_22: -1035012609
+      LightSpear_64x64_23: 1414261070
+      LightSpear_64x64_24: -765513271
+      LightSpear_64x64_25: 802411709
+      LightSpear_64x64_26: 561909146
+      LightSpear_64x64_27: 1562077488
+      LightSpear_64x64_28: 2083442980
+      LightSpear_64x64_29: -1025162232
+      LightSpear_64x64_3: -898696863
+      LightSpear_64x64_30: -2048033219
+      LightSpear_64x64_31: -613804559
+      LightSpear_64x64_32: 16637236
+      LightSpear_64x64_4: 417778545
+      LightSpear_64x64_5: -764738116
+      LightSpear_64x64_6: 424121744
       LightSpear_64x64_7: -1329982266
       LightSpear_64x64_8: 1738682655
-      LightSpear_64x64_19: 1446147030
-      LightSpear_64x64_12: 55831898
-      LightSpear_64x64_0: -1826151404
-      LightSpear_64x64_16: 983231366
-      LightSpear_64x64_27: 1562077488
       LightSpear_64x64_9: -1451132046
-      LightSpear_64x64_11: 31742103
-      LightSpear_64x64_13: -130082379
-      LightSpear_64x64_25: 802411709
-      LightSpear_64x64_20: -1023509187
-      LightSpear_64x64_5: -764738116
-      LightSpear_64x64_28: 2083442980
-      LightSpear_64x64_17: 69151731
-      LightSpear_64x64_26: 561909146
-      LightSpear_64x64_6: 424121744
-      LightSpear_64x64_22: -1035012609
-      LightSpear_64x64_32: 16637236
-      LightSpear_64x64_29: -1025162232
-      LightSpear_64x64_24: -765513271
-      LightSpear_64x64_14: 1644021176
-      LightSpear_64x64_10: 1819883485
-      LightSpear_64x64_2: -686054657
-      LightSpear_64x64_3: -898696863
-      LightSpear_64x64_23: 1414261070
-      LightSpear_64x64_31: -613804559
-      LightSpear_64x64_21: -1598573505
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

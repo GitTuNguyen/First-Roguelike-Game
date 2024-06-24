@@ -18,5 +18,6 @@ MonoBehaviour:
   defaultSpeed: 4
   defaultMaxHealth: 100
   healthForLevelUpStep: 15
-  defaultMaxExp: 100
-  expForLevelUpStep: 20
+  defaultMaxExp: 80
+  expForLevelUpStep: 15
+  characterInfo: Requires less experience to LeveUp

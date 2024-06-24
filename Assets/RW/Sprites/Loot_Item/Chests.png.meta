@@ -3,7 +3,7 @@ guid: e183e338ac2964f4c973fcdd50e813a5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -33,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,33 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -967,49 +999,48 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Chests_9: 348667808
-      Chests_11: 1231000310
-      Chests_36: 1971776583
-      Chests_21: 429904391
-      Chests_34: -218825170
-      Chests_25: 1382680066
-      Chests_20: -65441010
-      Chests_38: -1105385675
-      Chests_5: 1090905253
-      Chests_33: -943134883
-      Chests_37: -2000452278
-      Chests_39: -1372529365
-      Chests_27: 362609825
-      Chests_23: -352934171
       Chests_0: -2101117057
-      Chests_17: -1973227996
-      Chests_31: -1375577013
-      Chests_13: 2057055656
-      Chests_15: 148713214
-      Chests_30: 705707883
-      Chests_16: -375271343
-      Chests_3: 416918562
-      Chests_7: 358887019
-      Chests_32: -1986489785
-      Chests_18: -998324152
-      Chests_14: -69203977
-      Chests_19: -1407245200
-      Chests_29: 594231063
-      Chests_6: 287622410
-      Chests_10: 229618013
-      Chests_4: 745594082
-      Chests_22: -1831572537
-      Chests_35: 482534365
       Chests_1: 1194164942
-      Chests_8: 734897284
+      Chests_10: 229618013
+      Chests_11: 1231000310
       Chests_12: -36221545
-      Chests_28: -1148063723
-      Chests_26: 1535758091
-      Chests_24: -855892106
+      Chests_13: 2057055656
+      Chests_14: -69203977
+      Chests_15: 148713214
+      Chests_16: -375271343
+      Chests_17: -1973227996
+      Chests_18: -998324152
+      Chests_19: -1407245200
       Chests_2: -1998359461
-  spritePackingTag: 
+      Chests_20: -65441010
+      Chests_21: 429904391
+      Chests_22: -1831572537
+      Chests_23: -352934171
+      Chests_24: -855892106
+      Chests_25: 1382680066
+      Chests_26: 1535758091
+      Chests_27: 362609825
+      Chests_28: -1148063723
+      Chests_29: 594231063
+      Chests_3: 416918562
+      Chests_30: 705707883
+      Chests_31: -1375577013
+      Chests_32: -1986489785
+      Chests_33: -943134883
+      Chests_34: -218825170
+      Chests_35: 482534365
+      Chests_36: 1971776583
+      Chests_37: -2000452278
+      Chests_38: -1105385675
+      Chests_39: -1372529365
+      Chests_4: 745594082
+      Chests_5: 1090905253
+      Chests_6: 287622410
+      Chests_7: 358887019
+      Chests_8: 734897284
+      Chests_9: 348667808
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -276,7 +276,7 @@ MonoBehaviour:
   - {fileID: 1125388957033446071, guid: ca116d9b43bc50b4ca8a37acec7fb31a, type: 3}
   - {fileID: 4498423193175938018, guid: dcb9f43d47115ca49a26570f3f199757, type: 3}
   - {fileID: 7945044033374770984, guid: 044ee6b6ba12cae45a6a17c94ce2b6ac, type: 3}
-  - {fileID: -8126541936146653424, guid: 0c881e5d549d2b445a40bd93d99da78d, type: 3}
+  - {fileID: 4489077403564290992, guid: 0c881e5d549d2b445a40bd93d99da78d, type: 3}
   - {fileID: -7369035749207480916, guid: 9515a0133b7739c49a250afc8806db71, type: 3}
   currentWeaponList: []
   animationController: {fileID: -6249353674015535727}

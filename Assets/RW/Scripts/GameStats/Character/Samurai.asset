@@ -15,8 +15,9 @@ MonoBehaviour:
   characterName: Samurai
   defaultWeapon: {fileID: 7945044033374770984, guid: 044ee6b6ba12cae45a6a17c94ce2b6ac, type: 3}
   defaultpickUpRadius: 1
-  defaultSpeed: 4
+  defaultSpeed: 6
   defaultMaxHealth: 100
   healthForLevelUpStep: 15
   defaultMaxExp: 100
   expForLevelUpStep: 20
+  characterInfo: Move faster

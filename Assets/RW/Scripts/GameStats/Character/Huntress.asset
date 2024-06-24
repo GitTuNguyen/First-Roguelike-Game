@@ -20,3 +20,4 @@ MonoBehaviour:
   healthForLevelUpStep: 15
   defaultMaxExp: 100
   expForLevelUpStep: 20
+  characterInfo: +1 projectile amount
