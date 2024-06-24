@@ -9,12 +9,12 @@ public class WeaponBehaviour : MonoBehaviour
     public float dame;
     public float pierce;
     public WeaponController weaponController;
-
     protected virtual void Start()
     {        
         speed = weaponController.speed;
         dame = weaponController.dame;
         pierce = weaponController.pierce;
+        transform.localScale = new Vector3(weaponController.projectileScale, weaponController.projectileScale, weaponController.projectileScale);
     }
     protected virtual void Update()
     {

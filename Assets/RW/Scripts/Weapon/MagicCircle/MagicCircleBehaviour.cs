@@ -23,8 +23,11 @@ public class MagicCircleBehaviour : WeaponBehaviour
     protected override void Update()
     {
         base.Update();
-        radiusOfDamage = defaultRadius * weaponController.projectileScale;
-        transform.localScale = new Vector3(weaponController.projectileScale, weaponController.projectileScale, weaponController.projectileScale);                
+        if (radiusOfDamage != defaultRadius * weaponController.projectileScale)
+        {
+            radiusOfDamage = defaultRadius * weaponController.projectileScale;
+            transform.localScale = new Vector3(weaponController.projectileScale, weaponController.projectileScale, weaponController.projectileScale);    
+        }                    
     }
     public void Attack()
     {

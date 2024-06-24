@@ -14,10 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Huntress
   defaultWeapon: {fileID: 1657976883894337526, guid: 977670c6628038a4a9f88aca754c852e, type: 3}
-  defaultpickUpRadius: 1
+  defaultPickUpRadius: 1
+  defaultWeaponSize: 1
   defaultSpeed: 4
+  defaultDodgeRate: 20
   defaultMaxHealth: 100
   healthForLevelUpStep: 15
   defaultMaxExp: 100
   expForLevelUpStep: 20
   characterInfo: +1 projectile amount
+  bonusAmountProjectile: 1
+  bonusDodgeRate: 0
+  bonusSpeed: 0
+  bonusMaxHealth: 0
+  bonusPickUpRadius: 0
+  bonusWeaponSize: 0
+  bonusHealing: 0

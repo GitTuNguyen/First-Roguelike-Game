@@ -28,6 +28,16 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float maxExp;
     [SerializeField]
+    private float pickUpRadius;
+    [SerializeField]
+    private float weaponScale;
+    [SerializeField]
+    private float dodgeRate;
+    [SerializeField]
+    private float bonusAmountProjectile;
+    [SerializeField]
+    private float bonusHealing;
+    [SerializeField]
     private float takeHitInterval;
     private int maxNumberOfWeapon = 6;
     [HideInInspector]
@@ -75,31 +85,34 @@ public class Player : MonoBehaviour
                 }
             }
         }
-    }
-
-    
+    }    
 
     private void Move()
     {
         transform.Translate(playerController.moveDir * playerSpeed * Time.deltaTime);
     }
+    
     public void LoseHP(int dmg)
     {
-        if (!isTakeHitInterval && currentHealth != 0)
-        {            
-            if (currentHealth > dmg)
-            {
-                ShowFloatingText(dmg, true);
-                animationController.TakeHitAnimation();
-                currentHealth -= dmg;
-                isTakeHitInterval = true;
-                AudioManager.Instance.PlaySFX("PlayerTakeHit");
+        float takeHitRate = Random.Range(0f, 100f);
+        if (takeHitRate > dodgeRate)
+        {
+            if (!isTakeHitInterval && currentHealth != 0)
+            {            
+                if (currentHealth > dmg)
+                {
+                    ShowFloatingText(dmg, true);
+                    animationController.TakeHitAnimation();
+                    currentHealth -= dmg;
+                    isTakeHitInterval = true;
+                    AudioManager.Instance.PlaySFX("PlayerTakeHit");
+                }
+                else
+                {
+                    Death();
+                }
+                healthBar.SetCurrentHeath(currentHealth);
             }
-            else
-            {
-                Death();
-            }
-            healthBar.SetCurrentHeath(currentHealth);
         }        
     }
 
@@ -116,13 +129,9 @@ public class Player : MonoBehaviour
             {
                 text.GetComponent<TextMeshPro>().text = $"+{number}";
                 text.GetComponent<TextMeshPro>().color = Color.green;
-            }
-            
+            }            
         }
     }
-
-    
-
     public void PickUpChest()
     {
         Array.Find(AudioManager.Instance.musicSounds, musicSound => musicSound.name == "ThemeMusic").audioSource.Stop();
@@ -131,6 +140,7 @@ public class Player : MonoBehaviour
     }
     public void GainHP(int health)
     {
+        health += (int)bonusHealing;
         ShowFloatingText(health, false);
         if (currentHealth + health > maxHealth)
         {
@@ -197,6 +207,7 @@ public class Player : MonoBehaviour
         if (!isAvailable)
         {
             WeaponController newWeapon = Instantiate(weaponController, transform.position, Quaternion.identity);
+            newWeapon.bonusWeaponScale = weaponScale;
             currentWeaponList.Add(newWeapon);
             UIManager.Instance.UpdateInventoryUI(newWeapon.weaponSprite);
         }
@@ -299,12 +310,16 @@ public class Player : MonoBehaviour
     public void SetCharacterDefaultStats()
     {
         playerLevel = 1;
-        maxHealth = characterStats.defaultMaxHealth;
+        maxHealth = characterStats.defaultMaxHealth + characterStats.bonusMaxHealth;
         currentHealth = maxHealth;
         maxExp = characterStats.defaultMaxExp;
         currentExp = 0;
-        playerSpeed = characterStats.defaultSpeed;
-        float pickUpRadius = characterStats.defaultpickUpRadius;
+        playerSpeed = characterStats.defaultSpeed + characterStats.bonusSpeed;
+        pickUpRadius = characterStats.defaultPickUpRadius + characterStats.bonusPickUpRadius;
+        weaponScale = characterStats.defaultWeaponSize + characterStats.bonusWeaponSize;
+        dodgeRate = characterStats.defaultDodgeRate + characterStats.bonusDodgeRate;
+        bonusAmountProjectile = characterStats.bonusAmountProjectile;
+        bonusHealing = characterStats.bonusHealing;
         pickUpArea.transform.localScale = new Vector3(pickUpRadius, pickUpRadius, pickUpRadius);
     }
     private void UpdateStatsLevelUp()

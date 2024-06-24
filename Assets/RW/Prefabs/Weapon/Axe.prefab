@@ -52,6 +52,8 @@ MonoBehaviour:
   dame: 0
   pierce: 0
   weaponController: {fileID: 0}
+  thrust: 5
+  gravity: 0.5
 --- !u!61 &4239533067137824688
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -95,7 +97,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.30823678, y: 0.29685628}
+  m_Size: {x: 0.65, y: 0.66}
   m_EdgeRadius: 0
 --- !u!50 &-8507278569657027667
 Rigidbody2D:

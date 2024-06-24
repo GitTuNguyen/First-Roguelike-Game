@@ -14,10 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: BlueWitch
   defaultWeapon: {fileID: 4498423193175938018, guid: dcb9f43d47115ca49a26570f3f199757, type: 3}
-  defaultpickUpRadius: 1
+  defaultPickUpRadius: 1
+  defaultWeaponSize: 1
   defaultSpeed: 4
+  defaultDodgeRate: 20
   defaultMaxHealth: 100
   healthForLevelUpStep: 15
   defaultMaxExp: 100
   expForLevelUpStep: 20
-  characterInfo: 
+  characterInfo: Increase weapon's size
+  bonusAmountProjectile: 0
+  bonusDodgeRate: 0
+  bonusSpeed: 0
+  bonusMaxHealth: 0
+  bonusPickUpRadius: 0
+  bonusWeaponSize: 0.075
+  bonusHealing: 0

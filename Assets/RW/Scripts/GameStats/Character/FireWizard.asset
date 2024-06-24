@@ -14,10 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: FireWizard
   defaultWeapon: {fileID: 3169779986444597199, guid: c584a1fb7cfd510498f2ec7008c06f2b, type: 3}
-  defaultpickUpRadius: 1
+  defaultPickUpRadius: 1
+  defaultWeaponSize: 1
   defaultSpeed: 4
+  defaultDodgeRate: 20
   defaultMaxHealth: 100
   healthForLevelUpStep: 15
   defaultMaxExp: 80
   expForLevelUpStep: 15
-  characterInfo: Requires less experience to LeveUp
+  characterInfo: Requires less experience to LeveUp. Increase Pickup size
+  bonusAmountProjectile: 0
+  bonusDodgeRate: 0
+  bonusSpeed: 0
+  bonusMaxHealth: 0
+  bonusPickUpRadius: 0.3
+  bonusWeaponSize: 0
+  bonusHealing: 0

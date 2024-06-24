@@ -12,12 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f70c4c1c9ca44342828fac00c4b5f4f, type: 3}
   m_Name: Vampire Queen
   m_EditorClassIdentifier: 
-  characterName: Viking
+  characterName: Vampire Queen
   defaultWeapon: {fileID: 4489077403564290992, guid: 0c881e5d549d2b445a40bd93d99da78d, type: 3}
-  defaultpickUpRadius: 1
-  defaultSpeed: 6
-  defaultMaxHealth: 75
+  defaultPickUpRadius: 1
+  defaultWeaponSize: 1
+  defaultSpeed: 4
+  defaultDodgeRate: 20
+  defaultMaxHealth: 100
   healthForLevelUpStep: 15
   defaultMaxExp: 100
   expForLevelUpStep: 20
-  characterInfo: Low HP, more speed. Increases healing effect
+  characterInfo: Low HP. Increases healing effect
+  bonusAmountProjectile: 0
+  bonusDodgeRate: 0
+  bonusSpeed: 0
+  bonusMaxHealth: -25
+  bonusPickUpRadius: 0
+  bonusWeaponSize: 0
+  bonusHealing: 20

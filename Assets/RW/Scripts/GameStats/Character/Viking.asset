@@ -14,10 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Viking
   defaultWeapon: {fileID: -7369035749207480916, guid: 9515a0133b7739c49a250afc8806db71, type: 3}
-  defaultpickUpRadius: 1
-  defaultSpeed: 3
-  defaultMaxHealth: 150
-  healthForLevelUpStep: 15
+  defaultPickUpRadius: 1
+  defaultWeaponSize: 1
+  defaultSpeed: 4
+  defaultDodgeRate: 20
+  defaultMaxHealth: 130
+  healthForLevelUpStep: 20
   defaultMaxExp: 100
   expForLevelUpStep: 20
-  characterInfo: Higher Hp but move slow
+  characterInfo: Higher HP but move slow
+  bonusAmountProjectile: 0
+  bonusDodgeRate: 0
+  bonusSpeed: -1
+  bonusMaxHealth: 0
+  bonusPickUpRadius: 0
+  bonusWeaponSize: 0
+  bonusHealing: 0

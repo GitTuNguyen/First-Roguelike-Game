@@ -20,6 +20,7 @@ public class WeaponController : MonoBehaviour
     public float cooldown;
     public float timeToDestroy;
     public float radius;
+    public float bonusWeaponScale;
     public Vector3 projectileSpawnPosition;
     protected virtual void Start()
     {
@@ -36,7 +37,7 @@ public class WeaponController : MonoBehaviour
         pierce = stats[level - 1].pierce;
         amount = stats[level - 1].amount;
         projectileInterval = stats[level - 1].projectileInterval;
-        projectileScale = stats[level - 1].projectileScale;
+        projectileScale = stats[level - 1].projectileScale + bonusWeaponScale;
         attackDuration = stats[level - 1].attackDuration;
         cooldown = stats[level - 1].cooldown;
         timeToDestroy = stats[level - 1].timeToDestroy;

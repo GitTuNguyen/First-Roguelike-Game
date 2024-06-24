@@ -4,14 +4,23 @@ public class CharacterStats : ScriptableObject
 {
     public string characterName;
     public WeaponController defaultWeapon;
-    public float defaultpickUpRadius;
-
+    public float defaultPickUpRadius;
+    public float defaultWeaponSize;
     public float defaultSpeed;
-
+    public float defaultDodgeRate;
     public float defaultMaxHealth;
     public float healthForLevelUpStep;
 
     public float defaultMaxExp;
     public float expForLevelUpStep;
     public string characterInfo;
+
+    [Header("Passive bonus")]
+    public int bonusAmountProjectile;
+    public float bonusDodgeRate;
+    public float bonusSpeed;
+    public float bonusMaxHealth;
+    public float bonusPickUpRadius;
+    public float bonusWeaponSize;
+    public float bonusHealing;
 }

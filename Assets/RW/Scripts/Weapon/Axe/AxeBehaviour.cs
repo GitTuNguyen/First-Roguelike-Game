@@ -5,7 +5,7 @@ public class AxeBehaviour : WeaponBehaviour
     private Player player;
     private Rigidbody2D rb;
     public float thrust = 1f;
-    public float gravity = 2f;
+    public float gravity = 2.5f;
     private Vector2 mFallingDir;
     private bool mIsFalling = false;
     private void Awake()
@@ -20,7 +20,7 @@ public class AxeBehaviour : WeaponBehaviour
         base.Start();
         dir = new Vector2(Random.Range(-0.5f, 0.5f), 1f).normalized;
         mFallingDir = new Vector2(0, -1f).normalized;
-        thrust = Random.Range(2f, 3.5f);
+        thrust = Random.Range(5f, 7f);
         //rb?.AddForce(dir * thrust);
         //Rotate(dir);
         Destroy(gameObject, weaponController.timeToDestroy);
