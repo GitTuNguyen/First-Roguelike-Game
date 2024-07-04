@@ -34,28 +34,23 @@ public class VampireAxeController : WeaponController
     }
     protected override IEnumerator AttackRoutine()
     {
-        if (level < maxLevel)
+        while (!GameStateManager.Instance.isGameOver)
         {
-            while (!GameStateManager.Instance.isGameOver)
+            if (projectileList.Count == 0)
             {
                 for (int i = 0; i < amount; i++)
                 {
                     projectileSpawnPosition = player.transform.position + PolarToCartesian(i * 360 / amount);
                     Attack();
-                    yield return new WaitForSeconds(projectileInterval);
-                }            
+                }
+                if (level == maxLevel)
+                {
+                    isSpawned = true;
+                }
                 yield return new WaitForSeconds(cooldown);
             }
-        } else if (!isSpawned)
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                projectileSpawnPosition = player.transform.position + PolarToCartesian(i * 360 / amount);
-                Attack();
-                yield return new WaitForSeconds(projectileInterval);
-            }
-            isSpawned = true;
-        }        
+            yield return null;
+        }          
     }
 }
 
