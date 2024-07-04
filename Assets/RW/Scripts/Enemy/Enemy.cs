@@ -162,4 +162,16 @@ public class Enemy : MonoBehaviour
             GameStateManager.Instance.lootItemList.Add(lootItem);
         }
     }
+
+    protected void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Projectiles") && !isDeath)
+        {
+            if (other.transform.TryGetComponent<WeaponBehaviour>(out var weapon))
+            {
+                LoseHP(weapon.dame);
+                weapon.OnAttackEnemy();
+            }            
+        }        
+    }
 }
