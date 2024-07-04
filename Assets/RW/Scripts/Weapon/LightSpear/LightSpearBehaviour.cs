@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class LightSpearBehaviour : WeaponBehaviour
 {
-    private Player player;
     private void Awake()
     {
         player = FindObjectOfType<Player>();

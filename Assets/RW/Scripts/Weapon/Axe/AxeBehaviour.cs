@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class AxeBehaviour : WeaponBehaviour
 {
-    private Player player;
     private Rigidbody2D rb;
     public float thrust = 1f;
     public float gravity = 2.5f;

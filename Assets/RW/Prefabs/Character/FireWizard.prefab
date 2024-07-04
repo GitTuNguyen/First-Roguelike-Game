@@ -127,16 +127,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStats: {fileID: 11400000, guid: e593fadf2eb9799429084d99d5405417, type: 2}
-  allWeapon:
+  allWeaponList:
   - {fileID: 1657976883894337526, guid: 977670c6628038a4a9f88aca754c852e, type: 3}
+  - {fileID: -7369035749207480916, guid: 9515a0133b7739c49a250afc8806db71, type: 3}
   - {fileID: 3169779986444597199, guid: c584a1fb7cfd510498f2ec7008c06f2b, type: 3}
+  - {fileID: 7945044033374770984, guid: 044ee6b6ba12cae45a6a17c94ce2b6ac, type: 3}
   - {fileID: 7330084141538518953, guid: 43cf49de40528064a97852ac23f9471c, type: 3}
   - {fileID: 1125388957033446071, guid: ca116d9b43bc50b4ca8a37acec7fb31a, type: 3}
   - {fileID: 4498423193175938018, guid: dcb9f43d47115ca49a26570f3f199757, type: 3}
-  - {fileID: 7945044033374770984, guid: 044ee6b6ba12cae45a6a17c94ce2b6ac, type: 3}
   - {fileID: 4489077403564290992, guid: 0c881e5d549d2b445a40bd93d99da78d, type: 3}
-  - {fileID: -7369035749207480916, guid: 9515a0133b7739c49a250afc8806db71, type: 3}
   currentWeaponList: []
+  allPassiveSkillList:
+  - {fileID: 8328565957659303300, guid: 66b69609961d456478daa3feb4a417d5, type: 3}
+  - {fileID: -7629704964342076527, guid: 93f6be9eb28122e44aabc608894ba214, type: 3}
+  - {fileID: 8444168292919373778, guid: 4ee02f8f3c5ddb34baed5e964aef2d61, type: 3}
+  - {fileID: 4540393355290687050, guid: 1fb28e0f943aaa64ab30019fb6e76d3e, type: 3}
+  - {fileID: -5136594509915334208, guid: 36fae0a2933284043a1827f371c0b648, type: 3}
+  - {fileID: -3396694284462456441, guid: 6b2e0d61aa507eb4aa4af4dac2260b34, type: 3}
+  - {fileID: -412545633173364417, guid: e8518161c115af6448e60623cf6d5bd7, type: 3}
+  - {fileID: -6151594537346591169, guid: e62cc0712220b9649af278d4d59aa135, type: 3}
+  currentPassiveSkillList: []
   animationController: {fileID: 3066641342429404369}
   pickUpArea: {fileID: 7590064396827126697}
   healthBar: {fileID: 3414030964662674537}
@@ -147,9 +157,22 @@ MonoBehaviour:
   playerSpeed: 5
   currentExp: 0
   maxExp: 0
+  pickUpRadius: 0
+  weaponScale: 0
+  dodgeRate: 0
+  bonusAmountProjectile: 0
+  bonusHealing: 0
   takeHitInterval: 1
   amountWeaponSelectableWhenLvUp: 3
   isTakeHitInterval: 0
+  reduceCooldown: 0
+  increaseDame: 0
+  armor: 0
+  amountProjectile: 0
+  moveSpeed: 0
+  projectileSpeed: 0
+  bonusMaxHealth: 0
+  bonusExperience: 0
 --- !u!114 &3066641342429404369
 MonoBehaviour:
   m_ObjectHideFlags: 0

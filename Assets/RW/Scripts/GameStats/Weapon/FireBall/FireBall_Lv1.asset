@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: FireBall_Lv1
   m_EditorClassIdentifier: 
   sprite: {fileID: -1918220492, guid: 90cef7a054d964d40847b4115edc0474, type: 3}
-  projectileLevel: 1
+  skillType: 1
+  level: 1
   maxLevel: 5
+  description: Fires at the nearest enemy.
   projectileDMG: 10
   projectileSpeed: 5
   pierce: 1
   amount: 1
   projectileInterval: 0.1
   projectileScale: 1
+  radius: 0
   attackDuration: 0
   cooldown: 1.2
   timeToDestroy: 5
-  description: Fires at the nearest enemy.

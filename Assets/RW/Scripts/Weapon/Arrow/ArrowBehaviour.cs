@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ArrowBehaviour : WeaponBehaviour
 {
-    private Player player;
     private PlayerController playerController;
     private void Awake()
     {

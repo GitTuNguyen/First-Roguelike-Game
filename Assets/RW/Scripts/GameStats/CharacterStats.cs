@@ -10,9 +10,9 @@ public class CharacterStats : ScriptableObject
     public float defaultDodgeRate;
     public float defaultMaxHealth;
     public float healthForLevelUpStep;
-
     public float defaultMaxExp;
     public float expForLevelUpStep;
+    public float defaultArmor;
     public string characterInfo;
 
     [Header("Passive bonus")]
@@ -23,4 +23,5 @@ public class CharacterStats : ScriptableObject
     public float bonusPickUpRadius;
     public float bonusWeaponSize;
     public float bonusHealing;
+    public float bonusArmor;
 }

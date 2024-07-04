@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7483379740891724278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2617117684638667304}
+  - component: {fileID: -7629704964342076527}
+  m_Layer: 0
+  m_Name: Bracer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2617117684638667304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483379740891724278}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7629704964342076527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483379740891724278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02d76654fd290148874a6dc3d353422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Bracer
+  sprite: {fileID: 21300000, guid: e74bc30f7bdf5ba45a9d719a37eb03ee, type: 3}
+  prefab: {fileID: 0}
+  level: 0
+  maxLevel: 0
+  player: {fileID: 0}
+  stats:
+  - {fileID: 11400000, guid: 0850e6b724504374a8bd9689a6bd2684, type: 2}
+  - {fileID: 11400000, guid: 8af7f5f04d4eb074a839e60e794c426c, type: 2}
+  - {fileID: 11400000, guid: da62a5c1f76bfc2458c5b8faf511640d, type: 2}
+  - {fileID: 11400000, guid: 1f3cc4bf82e1b0c4eabd3fd5201b790b, type: 2}
+  - {fileID: 11400000, guid: 827d610095393e94c8e7e532a77be99e, type: 2}

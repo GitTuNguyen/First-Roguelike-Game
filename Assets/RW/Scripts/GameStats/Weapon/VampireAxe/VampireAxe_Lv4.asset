@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: VampireAxe_Lv4
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 3cfbc0d264f543440bdd4f14b029d8b4, type: 3}
-  projectileLevel: 4
+  skillType: 1
+  level: 4
   maxLevel: 5
+  description: Base damage up by 5
   projectileDMG: 15
   projectileSpeed: 20
   pierce: 1
@@ -24,5 +26,4 @@ MonoBehaviour:
   radius: 2
   attackDuration: 2
   cooldown: 7
-  timeToDestroy: 5
-  description: Base damage up by 5
+  timeToDestroy: 1

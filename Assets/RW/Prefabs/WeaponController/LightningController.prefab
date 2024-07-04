@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7330084141538518954}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7330084141538518953
 MonoBehaviour:
@@ -44,23 +44,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe93f6bdcbfeee24fb2ea961b17c3a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: Lightning
+  skillType: 1
+  sprite: {fileID: -1465827012, guid: 9026c0974967d2e45aae63fc934654db, type: 3}
+  prefab: {fileID: 8111163115162873365, guid: 9689f569ac32d37488defc5a8ffc7f86, type: 3}
+  level: 0
+  maxLevel: 0
+  player: {fileID: 0}
   stats:
   - {fileID: 11400000, guid: 97154ce4c1c39c8479b18f913682bb1c, type: 2}
   - {fileID: 11400000, guid: 2dda2c13c406d4d48a3ca9350306cc01, type: 2}
   - {fileID: 11400000, guid: 74a33ad5b9ea13b4681c1fc9d9ce61ad, type: 2}
   - {fileID: 11400000, guid: 8983b91dceb58e54eb4b415a477bd1dc, type: 2}
   - {fileID: 11400000, guid: 95f5c9f7836bfea43a871738c828e8c6, type: 2}
-  projectileName: Lightning
-  weaponSprite: {fileID: -1465827012, guid: 9026c0974967d2e45aae63fc934654db, type: 3}
-  prefab: {fileID: 8111163115162873365, guid: 9689f569ac32d37488defc5a8ffc7f86, type: 3}
-  level: 0
-  speed: 0
+  projectileList: []
   dame: 0
-  timeToDestroy: 0
-  scale: 0
-  cooldown: 0
-  maxLevel: 0
+  speed: 0
+  pierce: 0
   amount: 0
-  lightningInterval: 0
-  baseArea: 0.5
-  currentArea: 0
+  projectileInterval: 0
+  projectileScale: 0
+  attackDuration: 0
+  cooldown: 0
+  timeToDestroy: 0
+  radius: 0
+  bonusWeaponScale: 0
+  bonusAmount: 0
+  projectileSpawnPosition: {x: 0, y: 0, z: 0}

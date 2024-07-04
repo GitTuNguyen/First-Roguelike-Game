@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: VampireAxe_Lv5
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 3cfbc0d264f543440bdd4f14b029d8b4, type: 3}
-  projectileLevel: 5
+  skillType: 1
+  level: 5
   maxLevel: 5
+  description: Base dame up by 5. Fires 1 more projectile. Sharply increase speed
+    and blood balls won't disapear anymore.
   projectileDMG: 20
   projectileSpeed: 40
   pierce: 0
@@ -24,6 +27,4 @@ MonoBehaviour:
   radius: 3
   attackDuration: 3
   cooldown: 7
-  timeToDestroy: 7
-  description: Base dame up by 5. Fires 1 more projectile. Sharply increase speed
-    and blood balls won't disapear anymore.
+  timeToDestroy: 0

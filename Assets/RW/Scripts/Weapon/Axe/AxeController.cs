@@ -1,10 +1,8 @@
 
 public class AxeController : WeaponController
 {
-    private Player player;
     protected override void Start()
     {
-        player = FindObjectOfType<Player>();
         base.Start();
     }
 

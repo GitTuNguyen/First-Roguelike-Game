@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Axe_Lv 3
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 306e57b1ce8c4fd4284cf76d017d97a9, type: 3}
-  projectileLevel: 3
+  skillType: 1
+  level: 3
   maxLevel: 5
+  description: Base damage up by 5. Effect lasts 0.5 seconds longer.
   projectileDMG: 20
-  projectileSpeed: 2
+  projectileSpeed: 7
   pierce: 0
   amount: 2
   projectileInterval: 0.2
   projectileScale: 0
+  radius: 0
   attackDuration: 0
   cooldown: 3
   timeToDestroy: 5
-  description: Base damage up by 5. Effect lasts 0.5 seconds longer.

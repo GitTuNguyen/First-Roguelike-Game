@@ -1,12 +1,9 @@
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Projectile Stats")]
-public class WeaponStats : ScriptableObject
+[CreateAssetMenu(fileName = "Weapon Stats")]
+public class WeaponStats : SkillStats
 {
-    public Sprite sprite;
-    public int projectileLevel;
-    public int maxLevel;
     public int projectileDMG;
     public float projectileSpeed;
     public int pierce;
@@ -17,5 +14,4 @@ public class WeaponStats : ScriptableObject
     public float attackDuration;
     public float cooldown;
     public float timeToDestroy;
-    public string description;
 }

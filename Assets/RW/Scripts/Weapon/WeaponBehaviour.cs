@@ -9,10 +9,12 @@ public class WeaponBehaviour : MonoBehaviour
     public float dame;
     public float pierce;
     public WeaponController weaponController;
+    public Player player;
     protected virtual void Start()
     {        
-        speed = weaponController.speed;
-        dame = weaponController.dame;
+        player = player = FindObjectOfType<Player>();
+        speed = weaponController.speed + player.projectileSpeed;
+        dame = weaponController.dame + dame * player.increaseDame;
         pierce = weaponController.pierce;
         transform.localScale = new Vector3(weaponController.projectileScale, weaponController.projectileScale, weaponController.projectileScale);
     }
@@ -54,5 +56,8 @@ public class WeaponBehaviour : MonoBehaviour
         }
     }
 
-    
+    protected void OnDestroy() 
+    {
+        weaponController.projectileList.Remove(gameObject);
+    }
 }

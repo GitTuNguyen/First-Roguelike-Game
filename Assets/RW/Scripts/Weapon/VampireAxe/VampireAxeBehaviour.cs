@@ -1,16 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class VampireAxeBehaviour : WeaponBehaviour
 {
-    private Player player;
     public Animator animator;
-    //private PlayerController playerController;
     private void Awake()
     {
-        player = FindObjectOfType<Player>();
-        //transform.parent = player.transform;
-        //playerController = FindObjectOfType<PlayerController>();
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        //Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
     protected override void Start()
     {
@@ -20,7 +16,7 @@ public class VampireAxeBehaviour : WeaponBehaviour
         //Rotate(dir);
         if (weaponController.level < weaponController.maxLevel)
         {
-            Destroy(gameObject, weaponController.timeToDestroy);
+            Destroy(gameObject, weaponController.cooldown - weaponController.timeToDestroy > 0 ? weaponController.cooldown - weaponController.timeToDestroy : 0);
         } else 
         {
             animator.SetTrigger("MaxLevel");

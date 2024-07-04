@@ -44,17 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b134935d02250c4bade962bf3755433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: Axe
+  skillType: 1
+  sprite: {fileID: 21300000, guid: 306e57b1ce8c4fd4284cf76d017d97a9, type: 3}
+  prefab: {fileID: 572321869634064016, guid: 2819a68b46a18bd4e8a0f18bb5a393ef, type: 3}
+  level: 0
+  maxLevel: 0
+  player: {fileID: 0}
   stats:
   - {fileID: 11400000, guid: b392056371888bd4bb0ac583727f562e, type: 2}
   - {fileID: 11400000, guid: f5c206c32d1e13e4c83c1f84ad204e8d, type: 2}
   - {fileID: 11400000, guid: 90cabf9b786b19945bf914fc50bbb4c2, type: 2}
   - {fileID: 11400000, guid: 18b9f4aa0d1692642969dd6a85638f74, type: 2}
   - {fileID: 11400000, guid: 5eaed308a1e02a54b8b8437e61351644, type: 2}
-  projectileName: Axe
-  weaponSprite: {fileID: 21300000, guid: 306e57b1ce8c4fd4284cf76d017d97a9, type: 3}
-  prefab: {fileID: 572321869634064016, guid: 2819a68b46a18bd4e8a0f18bb5a393ef, type: 3}
-  level: 0
-  maxLevel: 0
+  projectileList: []
   dame: 0
   speed: 0
   pierce: 0
@@ -64,4 +67,7 @@ MonoBehaviour:
   attackDuration: 0
   cooldown: 0
   timeToDestroy: 0
+  radius: 0
+  bonusWeaponScale: 0
+  bonusAmount: 0
   projectileSpawnPosition: {x: 0, y: 0, z: 0}

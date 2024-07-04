@@ -5,15 +5,20 @@ public class LevelUpUI : MonoBehaviour
 {
     private Player player;
     public List<OptionUI> optionOptionUIList;
-    public WeaponController weaponSelected;    
-    public void SetLevelUp(List<WeaponController> selectableList)
+    public SkillController skillSelected;    
+    public void SetLevelUp(List<SkillController> selectableList)
     {
+        if (selectableList.Count == 0) 
+        {
+            return;
+        }
+
         for (int i = 0; i < optionOptionUIList.Count; i++)
         {
             optionOptionUIList[i].gameObject.SetActive(true);
             if (i < selectableList.Count)
             {
-                optionOptionUIList[i].SetWeapon(selectableList[i]);
+                optionOptionUIList[i].SetData(selectableList[i]);
             } else
             {
                 optionOptionUIList[i].gameObject.SetActive(false);
@@ -21,22 +26,22 @@ public class LevelUpUI : MonoBehaviour
         }
     }
 
-    public void SetWeaponSelect(OptionUI option)
+    public void SetSkillSelect(OptionUI option)
     {
-        weaponSelected = option.optionWeapon;
+        skillSelected = option.optionSkill;
     }
 
-    public void UpgradeWeapon()
+    public void UpgradeSkill()
     {
         if (player == null)
         {
             player = FindObjectOfType<Player>();
         } 
-        if (weaponSelected != null)
+        if (skillSelected != null)
         {
             AudioManager.Instance.PlaySFX("PowerUp");
             GameStateManager.Instance.ResumeGame();
-            player.UpgradeWeapon(weaponSelected);            
+            player.UpgradeSkill(skillSelected);            
         }        
     }
 }

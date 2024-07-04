@@ -13,6 +13,6 @@ public class CharacterOption : MonoBehaviour
     {
         characterPrefabs = character;
         characterImage.sprite = characterPrefabs.GetComponent<SpriteRenderer>().sprite;
-        weaponDefaultImage.sprite = characterPrefabs.GetComponent<Player>().characterStats.defaultWeapon.GetComponent<WeaponController>().weaponSprite;
+        weaponDefaultImage.sprite = characterPrefabs.GetComponent<Player>().characterStats.defaultWeapon.GetComponent<WeaponController>().sprite;
     }
 }

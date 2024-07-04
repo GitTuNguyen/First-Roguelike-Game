@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d457a96a9c94755448845f425aace422, type: 3}
   m_Name: LightSpear_Lv 4
   m_EditorClassIdentifier: 
-  projectileName: Light Spear
   sprite: {fileID: 1738682655, guid: a3dea28f7869eb14cbf6b1eb6f91a637, type: 3}
-  projectileLevel: 4
+  skillType: 1
+  level: 4
   maxLevel: 5
+  description: Fires 1 more projectile.
   projectileDMG: 20
   projectileSpeed: 6
   pierce: 0
   amount: 3
   projectileInterval: 0.2
   projectileScale: 0
+  radius: 0
   attackDuration: 0
   cooldown: 3
   timeToDestroy: 3
-  description: Fires 1 more projectile.

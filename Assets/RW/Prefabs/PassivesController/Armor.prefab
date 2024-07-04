@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7483379740891724278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2617117684638667304}
+  - component: {fileID: 8328565957659303300}
+  m_Layer: 0
+  m_Name: Armor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2617117684638667304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483379740891724278}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8328565957659303300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483379740891724278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02d76654fd290148874a6dc3d353422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Armor
+  sprite: {fileID: 21300000, guid: e87970235524fdd4a8421f936f5a7334, type: 3}
+  prefab: {fileID: 0}
+  level: 0
+  maxLevel: 0
+  player: {fileID: 0}
+  stats:
+  - {fileID: 11400000, guid: f68f84c947053ad4f89d1f0f35d847c2, type: 2}
+  - {fileID: 11400000, guid: 1609329f44a1dcd4b8d95ff43d7e74b7, type: 2}
+  - {fileID: 11400000, guid: ed157f858c3c25a4f8972bf12d676450, type: 2}
+  - {fileID: 11400000, guid: 5806f2908f992c74ea28f84be1531d95, type: 2}
+  - {fileID: 11400000, guid: 8591391122a42324086c5a4e704c06e7, type: 2}

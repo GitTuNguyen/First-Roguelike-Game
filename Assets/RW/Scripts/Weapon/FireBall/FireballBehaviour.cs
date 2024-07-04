@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class FireballBehaviour : WeaponBehaviour
 {
-    private Player player;
     private Enemy closestEnemy;
 
     private void Awake()

@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: FireBall_Lv5
   m_EditorClassIdentifier: 
   sprite: {fileID: -1918220492, guid: 90cef7a054d964d40847b4115edc0474, type: 3}
-  projectileLevel: 5
+  skillType: 1
+  level: 5
   maxLevel: 5
+  description: Base damage up by 10. Fire 1 more projectile.
   projectileDMG: 20
   projectileSpeed: 5
   pierce: 1
   amount: 3
   projectileInterval: 0.1
   projectileScale: 1
+  radius: 0
   attackDuration: 0
   cooldown: 1.2
   timeToDestroy: 5
-  description: Base damage up by 10. Fire 1 more projectile.

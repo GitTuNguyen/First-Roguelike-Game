@@ -3,12 +3,17 @@ using UnityEngine;
 using TMPro;
 using System;
 using Random = UnityEngine.Random;
+using System.Linq;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
     public CharacterStats characterStats;
-    public List<WeaponController> allWeapon;
+    //public List<SkillController> allSkill;
+    public List<WeaponController> allWeaponList;
     public List<WeaponController> currentWeaponList;
+    public List<PassivesSkillController> allPassiveSkillList;
+    public List<PassivesSkillController> currentPassiveSkillList;
     public CharacterAnimationController animationController;
     public GameObject pickUpArea;
     private PlayerController playerController;
@@ -29,23 +34,32 @@ public class Player : MonoBehaviour
     private float maxExp;
     [SerializeField]
     private float pickUpRadius;
-    [SerializeField]
-    private float weaponScale;
+    public float weaponScale;
     [SerializeField]
     private float dodgeRate;
-    [SerializeField]
-    private float bonusAmountProjectile;
+    public float bonusAmountProjectile;
     [SerializeField]
     private float bonusHealing;
     [SerializeField]
     private float takeHitInterval;
     private int maxNumberOfWeapon = 6;
+    private int maxNumberOfPassive = 6;
     [HideInInspector]
     public int amountWeaponSelectableWhenLvUp = 3;
     [SerializeField]
     private bool isTakeHitInterval;
     private float timeAfterTakeHit;
     private float remainingExp;
+
+    [Header("Passive Skill Bonus")]
+    public float reduceCooldown;
+    public float increaseDame;
+    public float armor;
+    public float amountProjectile;
+    public float moveSpeed;
+    public float projectileSpeed;
+    public float bonusMaxHealth;
+    public float bonusExperience;
     
     // Start is called before the first frame update
     void Start()
@@ -67,6 +81,10 @@ public class Player : MonoBehaviour
         healthBar.SetCurrentHeath(currentHealth);
         UIManager.Instance.SetMaxEXP(maxExp);
         UIManager.Instance.SetCurrentEXP(currentExp);
+        // var tempAllWeaponList = new List<SkillController>(allWeaponList);
+        // allSkill.AddRange(tempAllWeaponList);
+        // var tempAllPassiveList = new List<SkillController>(allPassiveSkillList);
+        // allSkill.AddRange(tempAllPassiveList);
     }
 
     // Update is called once per frame
@@ -99,6 +117,7 @@ public class Player : MonoBehaviour
         {
             if (!isTakeHitInterval && currentHealth != 0)
             {            
+                dmg = dmg - (int)armor > 0 ? dmg - (int)armor : 0;
                 if (currentHealth > dmg)
                 {
                     ShowFloatingText(dmg, true);
@@ -132,6 +151,30 @@ public class Player : MonoBehaviour
             }            
         }
     }
+
+    public void SetPassiveBonus(PassivesSkillStats passiveStat)
+    {
+        reduceCooldown += passiveStat.reduceCooldown;
+        increaseDame += passiveStat.increaseDame;
+        armor += passiveStat.armor;
+        amountProjectile += passiveStat.amountProjectile;
+        moveSpeed += passiveStat.moveSpeed;
+        projectileSpeed += passiveStat.projectileSpeed;
+        bonusMaxHealth += passiveStat.maxHealth;
+        bonusExperience += passiveStat.bonusExperience;
+
+        playerSpeed += moveSpeed;
+        maxHealth +=  maxHealth*bonusMaxHealth;
+        RefreshWeapontController();
+    }
+
+    private void RefreshWeapontController()
+    {
+        foreach(var weapon in currentWeaponList)
+        {
+            weapon.SetStats(weapon.level);
+        }
+    }
     public void PickUpChest()
     {
         Array.Find(AudioManager.Instance.musicSounds, musicSound => musicSound.name == "ThemeMusic").audioSource.Stop();
@@ -152,8 +195,12 @@ public class Player : MonoBehaviour
         }
         healthBar.SetCurrentHeath(currentHealth);
     }
-    public void GainEXP(float exp)
+    public void GainEXP(float exp, bool isRemainingExp = false)
     {
+        if (!isRemainingExp)
+        {
+            exp += exp * bonusExperience;
+        }        
         if (currentExp + exp >= maxExp)
         {
             remainingExp = currentExp + exp - maxExp;
@@ -206,106 +253,198 @@ public class Player : MonoBehaviour
         }
         if (!isAvailable)
         {
-            WeaponController newWeapon = Instantiate(weaponController, transform.position, Quaternion.identity);
-            newWeapon.bonusWeaponScale = weaponScale;
+            WeaponController newWeapon = Instantiate(weaponController, transform.position, Quaternion.identity);            
+            newWeapon.SetStats(1);
             currentWeaponList.Add(newWeapon);
-            UIManager.Instance.UpdateInventoryUI(newWeapon.weaponSprite);
+            UIManager.Instance.UpdateInventoryUI(newWeapon.sprite);
         }
         AudioManager.Instance.PlaySFX("PowerUp");
         UIManager.Instance.levelUpUI.gameObject.SetActive(false);              
         if (remainingExp > 0)
         {
-            GainEXP(remainingExp);
+            GainEXP(remainingExp, true);
         }            
-    }    
-
-    public List<WeaponController> SelectableWeaponToUpgrade()
+    }
+    public void UpgradePassiveSkill(PassivesSkillController passivesSkillController)
     {
-        List<WeaponController> selectableWeapon = new List<WeaponController>();
+        bool isAvailable = false;
+        foreach (PassivesSkillController passive in currentPassiveSkillList)
+        {
+            if (passive == passivesSkillController)
+            {                
+                passive.Upgrade();
+                isAvailable = true;
+                break;
+            }
+        }
+        if (!isAvailable)
+        {
+            PassivesSkillController newPassiveSkill = Instantiate(passivesSkillController, transform.position, Quaternion.identity);
+            newPassiveSkill.SetStats(1);
+            currentPassiveSkillList.Add(newPassiveSkill);
+            UIManager.Instance.UpdateInventoryUI(newPassiveSkill.sprite, false);
+        }
+        AudioManager.Instance.PlaySFX("PowerUp");
+        UIManager.Instance.levelUpUI.gameObject.SetActive(false);              
+        if (remainingExp > 0)
+        {
+            GainEXP(remainingExp, true);
+        }            
+    }
+    public void UpgradeSkill(SkillController skill)
+    {
+        if (skill.skillType == SkillType.Weapon)
+        {
+            WeaponController weapon =  skill as WeaponController;
+            if (weapon != null)
+            {
+                UpgradeWeapon(weapon);
+            }
+        } else 
+        {
+            PassivesSkillController passive = skill as PassivesSkillController;
+            if (passive != null)
+            {
+                UpgradePassiveSkill(passive);
+            }
+        }
+    }
+
+    public List<SkillController> SelectableWeaponToUpgrade()
+    {
+        List<SkillController> selectableSkill = new List<SkillController>();
+        List<SkillController> pickedSkillList = new List<SkillController>();
+        //List<SkillController> tempAllSkillList = new List<SkillController>(currentPassiveSkillList);
         
+        selectableSkill.AddRange(currentWeaponList);
+        if (currentWeaponList.Count < maxNumberOfWeapon)
+        {
+            List<SkillController> tempAllWeaponList = new List<SkillController>(allWeaponList);
+            foreach(var weapon in currentWeaponList)
+            {
+                tempAllWeaponList.Remove(tempAllWeaponList.FirstOrDefault(c => c.skillName == weapon.skillName));
+            }
+            selectableSkill.AddRange(tempAllWeaponList);        
+        }
+
+        selectableSkill.AddRange(currentPassiveSkillList);        
+        if (currentPassiveSkillList.Count < maxNumberOfPassive)
+        {
+            List<SkillController> tempAllPassiveList = new List<SkillController>(allPassiveSkillList);
+            foreach(var passive in currentPassiveSkillList)
+            {
+                tempAllPassiveList.Remove(tempAllPassiveList.FirstOrDefault(c => c.skillName == passive.skillName));
+            }
+            selectableSkill.AddRange(tempAllPassiveList);
+        }
+
         int amountWeaponsMaxLv = 0;
         foreach (WeaponController weapon in currentWeaponList)
         {
             if (weapon.level == weapon.maxLevel)
             {
                 amountWeaponsMaxLv++;
+                selectableSkill.Remove(selectableSkill.FirstOrDefault(c => c.skillName == weapon.skillName));
             }
         }
-        Debug.Log("amountWeaponsMaxLv " + amountWeaponsMaxLv);
-        int numberSelectable;
-        if (maxNumberOfWeapon - amountWeaponsMaxLv < amountWeaponSelectableWhenLvUp)
-        {
-            numberSelectable = maxNumberOfWeapon - amountWeaponsMaxLv;
-            if (numberSelectable > 0)
-            {
-                if (currentWeaponList.Count == maxNumberOfWeapon)
-                {
-                    foreach (WeaponController weapon in currentWeaponList)
-                    {
-                        if (weapon.level < weapon.maxLevel)
-                        {
-                            selectableWeapon.Add(weapon);
-                        }
-                    }
-                    return selectableWeapon;
-                }                
-            }
-            else
-            {
-                return null;
-            }
-        }
-        else
-        {
-            numberSelectable = amountWeaponSelectableWhenLvUp;            
-        }
-
         
-        for (int i = 0; i < numberSelectable; i++)
+        Debug.Log("amountWeaponsMaxLv " + amountWeaponsMaxLv);
+
+        int amountPassiveSkillMaxLv = 0;        
+        foreach (PassivesSkillController passive in currentPassiveSkillList)
         {
-            bool isSelected = false;
-            while (!isSelected)
+            if (passive.level == passive.maxLevel)
             {
-                int rand = Random.Range(0, allWeapon.Count);
-                bool isAlreadyHave = false;
-                foreach (WeaponController weapon in selectableWeapon)
+                amountPassiveSkillMaxLv++;
+                selectableSkill.Remove(selectableSkill.FirstOrDefault(c => c.skillName == passive.skillName));
+            }
+        }        
+        Debug.Log("amountPassiveSkillMaxLv " + amountPassiveSkillMaxLv);
+
+        if (selectableSkill.Count > 0)
+        {
+            int numberSelectable = Math.Min(amountWeaponSelectableWhenLvUp, selectableSkill.Count);
+            for (int i = 0; i < numberSelectable; i++)
+            {
+                bool isSelected = false;
+                while (!isSelected)
                 {
-                    if (allWeapon[rand].projectileName == weapon.projectileName)
+                    int rand = Random.Range(0, selectableSkill.Count);
+                    bool isAlreadyPicked = false;
+                    foreach (SkillController skill in pickedSkillList)
                     {
-                        isAlreadyHave = true;
-                        break;
+                        if (selectableSkill[rand].skillName == skill.skillName)
+                        {
+                            isAlreadyPicked = true;
+                            break;
+                        }
                     }
-                }
-                if (isAlreadyHave)
-                {
-                    continue;
-                }
-                bool isWeaponMaxLv = false;
-                foreach(WeaponController weapon in currentWeaponList)
-                {
-                    if (allWeapon[rand].projectileName == weapon.projectileName)
+                    if (isAlreadyPicked)
                     {
-                        if (weapon.level < weapon.maxLevel)
-                        {
-                            selectableWeapon.Add(weapon);
-                            isSelected = true;
-                        }
-                        else
-                        {
-                            isWeaponMaxLv = true;
-                        }
-                        break;
-                    }                                        
-                }
-                if (!isSelected && !isWeaponMaxLv)
-                {
-                    selectableWeapon.Add(allWeapon[rand]);
+                        continue;
+                    }
+                    // bool isWeaponMaxLv = false;
+                    // foreach(WeaponController weapon in currentWeaponList)
+                    // {
+                    //     if (allSkill[rand].skillName == weapon.skillName)
+                    //     {
+                    //         if (weapon.level < weapon.maxLevel)
+                    //         {
+                    //             selectableSkill.Add(weapon);
+                    //             isSelected = true;
+                    //         }
+                    //         else
+                    //         {
+                    //             isWeaponMaxLv = true;
+                    //         }
+                    //         break;
+                    //     }                                        
+                    // }
+                    // if (!isSelected && !isWeaponMaxLv)
+                    // {
+                    //     selectableSkill.Add(allSkill[rand]);
+                    //     isSelected = true;
+                    // }
+                    pickedSkillList.Add(selectableSkill[rand]);
                     isSelected = true;
                 }
-                
-            }
+            }            
         }
-        return selectableWeapon;
+        return pickedSkillList;
+        
+        // int numberWeaponSelectable = maxNumberOfWeapon - amountWeaponsMaxLv;
+        // int numberPassiveSelectable = maxNumberOfPassive - amountPassiveSkillMaxLv;
+        // if (amountWeaponSelectableWhenLvUp)
+
+        // //int numberSelectable;
+        // if (maxNumberOfWeapon - amountWeaponsMaxLv < amountWeaponSelectableWhenLvUp)
+        // {
+        //     numberSelectable = maxNumberOfWeapon - amountWeaponsMaxLv;
+        //     if (numberSelectable > 0)
+        //     {
+        //         if (currentWeaponList.Count == maxNumberOfWeapon)
+        //         {
+        //             foreach (WeaponController weapon in currentWeaponList)
+        //             {
+        //                 if (weapon.level < weapon.maxLevel)
+        //                 {
+        //                     selectableSkill.Add(weapon);
+        //                 }
+        //             }
+        //             return selectableSkill;
+        //         }                
+        //     }
+        //     else
+        //     {
+        //         return null;
+        //     }
+        // }
+        // else
+        // {
+        //     numberSelectable = amountWeaponSelectableWhenLvUp;            
+        // }
+
+        
     }
     public void SetCharacterDefaultStats()
     {
@@ -320,6 +459,7 @@ public class Player : MonoBehaviour
         dodgeRate = characterStats.defaultDodgeRate + characterStats.bonusDodgeRate;
         bonusAmountProjectile = characterStats.bonusAmountProjectile;
         bonusHealing = characterStats.bonusHealing;
+
         pickUpArea.transform.localScale = new Vector3(pickUpRadius, pickUpRadius, pickUpRadius);
     }
     private void UpdateStatsLevelUp()

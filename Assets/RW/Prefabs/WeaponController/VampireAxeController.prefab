@@ -44,17 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc929fd1293d6c4a933a13e8f595a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: VampireAxe
+  skillType: 1
+  sprite: {fileID: 21300000, guid: c123d9e7b3df20542b0127161ef54a32, type: 3}
+  prefab: {fileID: 5867563591886797932, guid: fff3e17a671bf7741b338732c178847b, type: 3}
+  level: 0
+  maxLevel: 0
+  player: {fileID: 0}
   stats:
   - {fileID: 11400000, guid: 6ee5125876babea4dbf37b9ce8c5a636, type: 2}
   - {fileID: 11400000, guid: 277e515b4ceed5147ba0fcfa48e5430d, type: 2}
   - {fileID: 11400000, guid: fd933c3535bed7044b9c428a77eee240, type: 2}
   - {fileID: 11400000, guid: c736867048fe54b429ae220cb621d286, type: 2}
   - {fileID: 11400000, guid: 61731ffa095d2e348820be5859e8b77e, type: 2}
-  projectileName: VampireAxe
-  weaponSprite: {fileID: 21300000, guid: c123d9e7b3df20542b0127161ef54a32, type: 3}
-  prefab: {fileID: 5867563591886797932, guid: fff3e17a671bf7741b338732c178847b, type: 3}
-  level: 0
-  maxLevel: 0
+  projectileList: []
   dame: 0
   speed: 0
   pierce: 0
@@ -64,5 +67,7 @@ MonoBehaviour:
   attackDuration: 0
   cooldown: 0
   timeToDestroy: 0
+  radius: 0
+  bonusWeaponScale: 0
+  bonusAmount: 0
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
-  distance: 1

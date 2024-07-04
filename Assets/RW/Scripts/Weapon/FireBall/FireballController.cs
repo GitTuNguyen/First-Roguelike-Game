@@ -1,11 +1,9 @@
 
 public class FireballController : WeaponController
 {
-    private Player player;
     private EnemySpawner enemySpawner;
     protected override void Start()
     {
-        player = FindObjectOfType<Player>();
         enemySpawner = FindObjectOfType<EnemySpawner>();
         base.Start();        
     }

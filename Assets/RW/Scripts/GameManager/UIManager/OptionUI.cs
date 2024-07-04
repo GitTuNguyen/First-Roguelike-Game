@@ -5,18 +5,18 @@ using UnityEngine.UI;
 public class OptionUI : MonoBehaviour
 {
     //public SpriteRenderer spriteWeapon;
-    public Image weaponImage;
+    public Image skillImage;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI detaildText;
-    public WeaponController optionWeapon;
-    public void SetWeapon(WeaponController weaponController)
+    public SkillController optionSkill;
+    public void SetData(SkillController skillController)
     {
-        optionWeapon = weaponController;
-        weaponImage.sprite = optionWeapon.weaponSprite;
-        nameText.text = optionWeapon.projectileName;
-        int nextLevel = optionWeapon.level + 1;
+        optionSkill = skillController;
+        skillImage.sprite = optionSkill.sprite;
+        nameText.text = optionSkill.skillName;
+        int nextLevel = optionSkill.level + 1;
         levelText.text = "Level " + nextLevel.ToString();        
-        detaildText.text = optionWeapon.getDescriptionNextLevel();
+        detaildText.text = optionSkill.getDescriptionNextLevel();
     }
 }

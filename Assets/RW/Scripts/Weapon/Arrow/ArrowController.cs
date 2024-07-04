@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class ArrowController : WeaponController
 {    
-    private Player player;
     protected override void Start()
     {
-        player = FindObjectOfType<Player>();
         base.Start();
     }
        

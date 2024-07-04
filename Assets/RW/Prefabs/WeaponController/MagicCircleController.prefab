@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4498423193175938020}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4498423193175938018
 MonoBehaviour:
@@ -44,16 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab5f63217271a747bb83ece1b09225a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: MagicCircle
+  skillType: 1
+  sprite: {fileID: 1897643641, guid: 9026c0974967d2e45aae63fc934654db, type: 3}
+  prefab: {fileID: 6763514533152279888, guid: ed1738f4aab9b144bae96d56a82b639f, type: 3}
+  level: 0
+  maxLevel: 0
+  player: {fileID: 0}
   stats:
   - {fileID: 11400000, guid: 5361f1f4ace816942af0cf938ebe2603, type: 2}
   - {fileID: 11400000, guid: e33c96f411f681f4ba835fa8403253e8, type: 2}
   - {fileID: 11400000, guid: d6f9668a55092b742ac49bec75020ba0, type: 2}
   - {fileID: 11400000, guid: dd789e9a278beea4c9138f2c78581641, type: 2}
   - {fileID: 11400000, guid: 495fe8698032d924ca2839672cffeee7, type: 2}
-  projectileName: MagicCircle
-  weaponSprite: {fileID: 1897643641, guid: 9026c0974967d2e45aae63fc934654db, type: 3}
-  prefab: {fileID: 6763514533152279888, guid: ed1738f4aab9b144bae96d56a82b639f, type: 3}
-  level: 0
+  projectileList: []
   dame: 0
   speed: 0
   pierce: 0
@@ -63,5 +67,7 @@ MonoBehaviour:
   attackDuration: 0
   cooldown: 0
   timeToDestroy: 0
+  radius: 0
+  bonusWeaponScale: 0
+  bonusAmount: 0
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
-  maxLevel: 0

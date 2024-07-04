@@ -5,11 +5,9 @@ using Unity.Mathematics;
 
 public class VampireAxeController : WeaponController
 {    
-    private Player player;
     private bool isSpawned = false;
     protected override void Start()
     {
-        player = FindObjectOfType<Player>();
         base.Start();
     }
 
@@ -29,10 +27,10 @@ public class VampireAxeController : WeaponController
         return new Vector3(x, y, 0.0f);
     }
     protected override void Attack()
-    {
-        //projectileSpawnPosition = player.transform.position + new Vector3(0, Random.Range(-0.25f, 0.25f), 0);
-        Instantiate(prefab, projectileSpawnPosition, Quaternion.identity, player.transform);
-        //AudioManager.Instance.PlaySFX("Arrow");
+    { 
+        var projectile = Instantiate(prefab, projectileSpawnPosition, Quaternion.identity, player.transform);
+        
+        projectileList.Add(projectile);
     }
     protected override IEnumerator AttackRoutine()
     {

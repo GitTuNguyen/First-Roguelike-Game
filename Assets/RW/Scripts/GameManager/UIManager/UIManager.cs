@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public Slider expSlider;
     public List<Image> weaponInvetory;
+
+    public List<Image> passiveInvetory;
     public TextMeshProUGUI levelText;
     private void Awake()
     {
@@ -50,15 +52,30 @@ public class UIManager : MonoBehaviour
     }
 
     //Iventory
-    public void UpdateInventoryUI(Sprite skillSprite)
+    public void UpdateInventoryUI(Sprite skillSprite, bool isWeapon = true)
     {
-        for (int i = 0; i < weaponInvetory.Count; i++)
+        if (isWeapon)
         {
-            if (weaponInvetory[i].sprite == null)
+            for (int i = 0; i < weaponInvetory.Count; i++)
             {
-                weaponInvetory[i].sprite = skillSprite;
-                weaponInvetory[i].gameObject.SetActive(true);
-                break;
+                if (weaponInvetory[i].sprite == null)
+                {
+                    weaponInvetory[i].sprite = skillSprite;
+                    weaponInvetory[i].gameObject.SetActive(true);
+                    break;
+                }
+            }
+        }
+        else 
+        {
+            for (int i = 0; i < passiveInvetory.Count; i++)
+            {
+                if (passiveInvetory[i].sprite == null)
+                {
+                    passiveInvetory[i].sprite = skillSprite;
+                    passiveInvetory[i].gameObject.SetActive(true);
+                    break;
+                }
             }
         }
     }
@@ -71,6 +88,14 @@ public class UIManager : MonoBehaviour
             {
                 weaponImage.sprite = null;
                 weaponImage.gameObject.SetActive(false);
+            }
+        }
+        foreach (Image skillImage in passiveInvetory)
+        {
+            if (skillImage.sprite != null)
+            {
+                skillImage.sprite = null;
+                skillImage.gameObject.SetActive(false);
             }
         }
     }

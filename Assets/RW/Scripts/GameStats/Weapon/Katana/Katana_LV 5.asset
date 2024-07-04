@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d457a96a9c94755448845f425aace422, type: 3}
   m_Name: Katana_LV 5
   m_EditorClassIdentifier: 
-  projectileName: Katana
   sprite: {fileID: 0}
-  projectileLevel: 5
+  skillType: 1
+  level: 5
   maxLevel: 5
+  description: Base damage up by 5. Base area up by 10%.Fires 1 more projectile.
   projectileDMG: 20
   projectileSpeed: 0
   pierce: 0
   amount: 3
   projectileInterval: 0.1
   projectileScale: 1.2
+  radius: 0
   attackDuration: 0
   cooldown: 1.35
   timeToDestroy: 0.2
-  description: Base damage up by 5. Base area up by 10%.Fires 1 more projectile.

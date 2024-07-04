@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: MagicCircle_Lv 1
   m_EditorClassIdentifier: 
   sprite: {fileID: -177195518, guid: a6f2c9288801db94b9e4358c20db2c43, type: 3}
-  projectileLevel: 1
+  skillType: 1
+  level: 1
   maxLevel: 5
+  description: Damages nearby enemies
   projectileDMG: 5
   projectileSpeed: 0
   pierce: 0
   amount: 1
   projectileInterval: 0
   projectileScale: 1
+  radius: 0
   attackDuration: 1.3
   cooldown: 1.3
   timeToDestroy: 0
-  description: Damages nearby enemies

@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d457a96a9c94755448845f425aace422, type: 3}
   m_Name: Arrow_Lv2
   m_EditorClassIdentifier: 
-  projectileName: Arrow
   sprite: {fileID: 21300000, guid: 3cfbc0d264f543440bdd4f14b029d8b4, type: 3}
-  projectileLevel: 2
+  skillType: 1
+  level: 2
   maxLevel: 5
+  description: Fires 1 more projectile.
   projectileDMG: 5
   projectileSpeed: 7
   pierce: 1
   amount: 2
   projectileInterval: 0.1
   projectileScale: 1
+  radius: 0
   attackDuration: 0
   cooldown: 1
   timeToDestroy: 5
-  description: Fires 1 more projectile.

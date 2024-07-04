@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125388957033446070}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1125388957033446071
 MonoBehaviour:
@@ -44,21 +44,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e6ad3ae46ad37479624d4506d6c029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: LightSpear
+  skillType: 1
+  sprite: {fileID: -1826151404, guid: a3dea28f7869eb14cbf6b1eb6f91a637, type: 3}
+  prefab: {fileID: 7940246909920098301, guid: ce228db564662f740b18c43a1ffbf823, type: 3}
+  level: 0
+  maxLevel: 0
+  player: {fileID: 0}
   stats:
   - {fileID: 11400000, guid: c8613b0c962960048bccf3a88ee87f91, type: 2}
   - {fileID: 11400000, guid: 79c5ef3df3e99114eb964592b9c1557f, type: 2}
   - {fileID: 11400000, guid: 2252ca1f056da5f49b33cca3317e85eb, type: 2}
   - {fileID: 11400000, guid: 5fa9e891636a6a348af551252b05ee51, type: 2}
   - {fileID: 11400000, guid: f4132e98d22529d40992066e1b1d5af5, type: 2}
-  projectileName: LightSpear
-  weaponSprite: {fileID: 1738682655, guid: a3dea28f7869eb14cbf6b1eb6f91a637, type: 3}
-  prefab: {fileID: 7940246909920098301, guid: ce228db564662f740b18c43a1ffbf823, type: 3}
-  level: 0
-  speed: 0
+  projectileList: []
   dame: 0
-  timeToDestroy: 0
-  scale: 0
-  cooldown: 0
-  maxLevel: 0
+  speed: 0
+  pierce: 0
   amount: 0
-  lightSpearInterval: 0
+  projectileInterval: 0
+  projectileScale: 0
+  attackDuration: 0
+  cooldown: 0
+  timeToDestroy: 0
+  radius: 0
+  bonusWeaponScale: 0
+  bonusAmount: 0
+  projectileSpawnPosition: {x: 0, y: 0, z: 0}

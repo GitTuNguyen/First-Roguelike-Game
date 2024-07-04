@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class WeaponController : MonoBehaviour
+public class WeaponController : SkillController
 {
     public List<WeaponStats> stats;
-    public string projectileName;
-    public Sprite weaponSprite;
-    public GameObject prefab;
-    public int level;
-    public int maxLevel;
+    public List<Object> projectileList;
     public int dame;
     public float speed;
     public int pierce;
@@ -21,47 +18,43 @@ public class WeaponController : MonoBehaviour
     public float timeToDestroy;
     public float radius;
     public float bonusWeaponScale;
+    public int bonusAmount = 0;
     public Vector3 projectileSpawnPosition;
-    protected virtual void Start()
+
+    
+    protected override void Start()
     {
-        level = 1;
+        base.Start();
         maxLevel = stats.Count;
-        SetStats(level);
+        skillType = stats[0].skillType;
+        //SetStats(level);
         StartCoroutine(AttackRoutine());
     }
 
-    protected virtual void SetStats(int level)
+    public override void SetStats(int level)
     {
         dame = stats[level - 1].projectileDMG;
         speed = stats[level - 1].projectileSpeed;
         pierce = stats[level - 1].pierce;
-        amount = stats[level - 1].amount;
+        amount = stats[level - 1].amount + (int)player.amountProjectile + (int)player.bonusAmountProjectile;
         projectileInterval = stats[level - 1].projectileInterval;
-        projectileScale = stats[level - 1].projectileScale + bonusWeaponScale;
+        projectileScale = stats[level - 1].projectileScale + player.weaponScale;
         attackDuration = stats[level - 1].attackDuration;
-        cooldown = stats[level - 1].cooldown;
+        cooldown = stats[level - 1].cooldown - cooldown * player.reduceCooldown;
         timeToDestroy = stats[level - 1].timeToDestroy;
         radius = stats[level - 1].radius;
+        Reset();
     }
 
-    public string getDescriptionNextLevel()
+    public override string getDescriptionNextLevel()
     {
         return stats[level].description;
     }
 
-    public bool isCanUplevel()
-    {
-        return level < maxLevel;
-    }
-    public void Upgrade()
-    {
-        level++;
-        SetStats(level);
-    }
-
     protected virtual void Attack()
     {
-        Instantiate(prefab, projectileSpawnPosition, Quaternion.identity);
+        var projectile = Instantiate(prefab, projectileSpawnPosition, Quaternion.identity);
+        projectileList.Add(projectile);
     }
 
     protected virtual IEnumerator AttackRoutine()
@@ -75,5 +68,19 @@ public class WeaponController : MonoBehaviour
             }
             yield return new WaitForSeconds(cooldown);
         }
+    }
+
+    public void Reset()
+    {
+        if (projectileList.Count > 0)
+        {
+            StopCoroutine(AttackRoutine());
+            foreach(var projectile in projectileList)
+            {
+                Destroy(projectile);
+            }
+            projectileList.Clear();
+            StartCoroutine(AttackRoutine());
+        }        
     }
 }
