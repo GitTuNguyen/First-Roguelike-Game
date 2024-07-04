@@ -34,26 +34,9 @@ public class WeaponBehaviour : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360);
     }
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    public virtual void OnAttackEnemy()
     {
-        if (collision.collider.CompareTag("Projectiles"))
-        {
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
-        }
-        if (collision.collider.CompareTag("Enemy"))
-        {
-            collision.transform.GetComponent<Enemy>().LoseHP(dame);
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
-            pierce--;            
-        }
-    }
-
-    protected virtual void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Enemy"))
-        {
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>(), false);
-        }
+        pierce--;
     }
 
     protected void OnDestroy() 

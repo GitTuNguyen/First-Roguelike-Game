@@ -47,25 +47,4 @@ public class MagicCircleBehaviour : WeaponBehaviour
             timeAttack += Time.unscaledDeltaTime;
         }
     }
-
-    protected override void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Enemy"))
-        {
-            collision.gameObject.GetComponent<Enemy>().LoseHP(dame);
-        }
-    }
-
-    protected override void OnCollisionExit2D(Collision2D collision)
-    {
-        
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Enemy"))
-        {
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
-        }
-    }
 }

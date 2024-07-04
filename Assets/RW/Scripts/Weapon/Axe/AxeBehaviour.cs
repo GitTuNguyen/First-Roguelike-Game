@@ -55,8 +55,4 @@ public class AxeBehaviour : WeaponBehaviour
     {
         
     }
-    protected override void OnCollisionEnter2D(Collision2D collision)
-    {
-        base.OnCollisionEnter2D(collision);        
-    }
 }

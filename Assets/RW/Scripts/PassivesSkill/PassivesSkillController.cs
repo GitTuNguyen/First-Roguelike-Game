@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
 public class PassivesSkillController : SkillController
 {
     public List<PassivesSkillStats> stats;
@@ -10,6 +7,7 @@ public class PassivesSkillController : SkillController
     {
         base.Start();
         skillType = stats[0].skillType;
+        maxLevel = stats.Count;
     }
     public override void SetStats(int level)
     {
@@ -18,7 +16,14 @@ public class PassivesSkillController : SkillController
 
     public override string getDescriptionNextLevel()
     {
-        return stats[level].description;
+        try
+        {
+            return stats[level].description;
+        }
+        catch (System.Exception e)
+        {
+            print(stats[level - 1].name + "has error at level " + level);
+            return "";
+        }        
     }
-
 }

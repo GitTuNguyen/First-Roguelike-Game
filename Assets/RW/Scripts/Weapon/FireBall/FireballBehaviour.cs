@@ -46,9 +46,9 @@ public class FireballBehaviour : WeaponBehaviour
         return closestEnemy;
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    public override void OnAttackEnemy()
     {
-        base.OnCollisionEnter2D(collision);
+        base.OnAttackEnemy();
         if (pierce <= 0)
         {
             Destroy(gameObject);
