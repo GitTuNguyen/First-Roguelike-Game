@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7341157604472048887}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-7063142506174997865
 MonoBehaviour:
@@ -57,14 +57,27 @@ MonoBehaviour:
     dropRate: 25
   - name: Blue Gem
     itemPrefabs: {fileID: 8559550673067896511, guid: e030ae425f9dc6046babc0566601c953, type: 3}
-    dropRate: 0
+    dropRate: 10
   - name: Red Gem
     itemPrefabs: {fileID: 1436479077793310101, guid: 5c73de0ef5c09a144b045f7bed152b8c, type: 3}
-    dropRate: 0
+    dropRate: 5
+  - name: Orologion
+    itemPrefabs: {fileID: 8583979171179233459, guid: 4ef3ccf54d740b748a9f4196b082c712, type: 3}
+    dropRate: 5
+  - name: Rosary
+    itemPrefabs: {fileID: 8583979171179233459, guid: 204cf1e022e4d7741a068c694241fc85, type: 3}
+    dropRate: 5
+  - name: Vacuum
+    itemPrefabs: {fileID: 8583979171179233459, guid: 73ed54cfec15c534f971cbd6227bf31d, type: 3}
+    dropRate: 5
   floatingTextPrefabs: {fileID: 2439674890540229241, guid: 8dec75385a5550648a87e984a10421d0, type: 3}
   originalMaterial: {fileID: 0}
   flashMaterial: {fileID: 2100000, guid: eaf1b410c141d1344b147d0653d084ec, type: 2}
   flashDuration: 0.15
+  freezeMaterial: {fileID: 2100000, guid: f512b808a37522c41a362a9393d8037a, type: 2}
+  freezeDuration: 0
+  isFreezing: 0
+  enemyAnimator: {fileID: 7341157604472048889}
   health: 10
   speed: 1
   takeHitInterval: 0.5
@@ -142,6 +155,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!50 &-4293236756569850655
 Rigidbody2D:
   serializedVersion: 4
@@ -159,6 +173,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -173,6 +193,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -22,7 +23,8 @@ public class EnemySpawner : MonoBehaviour
     [HideInInspector]
     public List<GameObject> enemyList = new List<GameObject>();
     private Player player;
-    // Start is called before the first frame update
+    
+    bool isFreezing = false;
     void Start()
     {
         StartCoroutine(SpawnRoutine());
@@ -79,8 +81,11 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnRoutine()
     {
         while (!GameStateManager.Instance.isGameOver)
-        {            
-            SpawnEnemy();
+        {   
+            if (!isFreezing)     
+            {
+                SpawnEnemy();                
+            }
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
     }
@@ -90,6 +95,25 @@ public class EnemySpawner : MonoBehaviour
         enemyList.Remove(enemy);
     }
 
+    public void FreezesAllEnemy(float timeFreeze)
+    {
+        isFreezing = true;
+        StartCoroutine(FreezeRoutine(timeFreeze));        
+    }
+
+    private IEnumerator FreezeRoutine(float timeFreeze)
+    {        
+        foreach (GameObject enemy in enemyList)
+        {
+            Enemy enemyController = enemy.GetComponent<Enemy>();
+            if (enemyController != null)
+            {
+                enemyController.Freeze(timeFreeze);
+            }
+        }
+        yield return new WaitForSeconds(timeFreeze);
+        isFreezing = false;
+    }
     public void DestroyAllEnemy()
     {
         foreach (GameObject enemy in enemyList)
@@ -97,6 +121,19 @@ public class EnemySpawner : MonoBehaviour
             Destroy(enemy);
         }
 
+        enemyList.Clear();
+    }
+
+    public void KillAllEnemy()
+    {
+        foreach (GameObject enemy in enemyList)
+        {
+            Enemy enemyController = enemy.GetComponent<Enemy>();
+            if (enemyController != null)
+            {
+                enemyController.Death(true);
+            }
+        }
         enemyList.Clear();
     }
 }

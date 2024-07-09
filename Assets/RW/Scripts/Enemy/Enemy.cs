@@ -27,6 +27,18 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected Coroutine flashCoroutine;
 
+    [Header("Freeze Effect")]
+    [SerializeField]
+    protected Material freezeMaterial;
+    [SerializeField]
+    protected Coroutine freezeCoroutine;
+    [SerializeField]
+    protected float freezeDuration;
+    [SerializeField]
+    protected bool isFreezing;
+    public Animator enemyAnimator;
+
+
     [Header("Enemy Stats")]
     [SerializeField]
     protected float health = 100;
@@ -41,7 +53,7 @@ public class Enemy : MonoBehaviour
     protected Vector2 dir;
     protected float timeAfterTakeHit;
     protected bool canTakeHit;
-    protected bool isDeath;
+    protected bool isDied;
     protected EnemySpawner enemySpawner;
 
     // Start is called before the first frame update
@@ -49,10 +61,11 @@ public class Enemy : MonoBehaviour
     {
         timeAfterTakeHit = 0;
         canTakeHit = true;
-        isDeath = false;
+        isDied = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
         flashMaterial = new Material(flashMaterial);
+        isFreezing = false;
     }
 
     // Update is called once per frame
@@ -60,7 +73,7 @@ public class Enemy : MonoBehaviour
     {        
         Move();
         FlipSprite();
-        if (!canTakeHit && !isDeath)
+        if (!canTakeHit && !isDied)
         {
             timeAfterTakeHit += Time.deltaTime;
             if (timeAfterTakeHit >= takeHitInterval)
@@ -73,7 +86,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Move()
     {
-        if (!isDeath)
+        if (!isDied && !isFreezing)
         {
             transform.Translate(dir * speed * Time.deltaTime);
         }        
@@ -89,11 +102,14 @@ public class Enemy : MonoBehaviour
 
     public void LoseHP(float dmg)
     {
-        if (canTakeHit && !isDeath)
+        if (canTakeHit && !isDied)
         {
             AudioManager.Instance.PlaySFX("EnemyTakeHit");
             ShowFloatingText(dmg);
-            FlashEffect();
+            if (!isFreezing)
+            {                
+                FlashEffect();
+            }
             if (health > dmg)
             {                
                 health -= dmg;
@@ -105,12 +121,18 @@ public class Enemy : MonoBehaviour
             }
         }        
     }
-    protected virtual void Death()
+    public virtual void Death(bool isKillingAll = false)
     {
-        DropItem();
-        isDeath = true;
-        enemySpawner.RemoveEnemyFromList(gameObject);
-        Destroy(gameObject, removeTimeDelay);
+        if (!isDied)
+        {
+            DropItem();
+            isDied = true;
+            if (!isKillingAll)
+            {
+                enemySpawner.RemoveEnemyFromList(gameObject);
+            }
+            Destroy(gameObject, removeTimeDelay);
+        }        
     }
     protected void ShowFloatingText(float dame)
     {
@@ -165,7 +187,7 @@ public class Enemy : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Projectiles") && !isDeath)
+        if (other.CompareTag("Projectiles") && !isDied)
         {
             if (other.transform.TryGetComponent<WeaponBehaviour>(out var weapon))
             {
@@ -173,5 +195,28 @@ public class Enemy : MonoBehaviour
                 weapon.OnAttackEnemy();
             }            
         }        
+    }
+
+    public void Freeze(float timeFreeze)
+    {
+        freezeDuration = timeFreeze;
+        if (freezeCoroutine != null)
+        {
+            StopCoroutine(freezeCoroutine);
+        }
+        freezeCoroutine = StartCoroutine(FreezeCoroutine());
+    }
+        
+
+    protected IEnumerator FreezeCoroutine()
+    {
+        spriteRenderer.material = freezeMaterial;
+        isFreezing = true;
+        enemyAnimator.speed = 0;
+        yield return new WaitForSeconds(freezeDuration);
+        isFreezing = false;
+        spriteRenderer.material = originalMaterial;
+        freezeCoroutine = null;
+        enemyAnimator.speed = 1;
     }
 }

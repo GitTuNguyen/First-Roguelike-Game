@@ -25,22 +25,29 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = FindObjectOfType<Player>();
+        }
         if (isFollowing)
         {
-
             transform.position = Vector3.SmoothDamp(transform.position, player.transform.position, ref velocity, Time.deltaTime * modifier);
-        }
-        
+        }        
     }
 
-    public void Follow()
+    public void PickUp(bool isClaimAll = false)
     {
         isFollowing = true;
+        if (isClaimAll)
+        {
+            modifier /= 2;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("PickUpArea"))
         {
+            PickUp();
             animator.SetTrigger("PickUp");
         }
     }

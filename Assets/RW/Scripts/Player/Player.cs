@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     private bool isTakeHitInterval;
     private float timeAfterTakeHit;
     private float remainingExp;
+    private bool isLevelingUp = false;
 
     [Header("Passive Skill Bonus")]
     public float reduceCooldown;
@@ -200,18 +201,23 @@ public class Player : MonoBehaviour
         if (!isRemainingExp)
         {
             exp += exp * bonusExperience;
-        }        
-        if (currentExp + exp >= maxExp)
+        }
+        if (isLevelingUp)
+        {
+            remainingExp += exp;
+        }
+        else if (currentExp + exp >= maxExp)
         {
             remainingExp = currentExp + exp - maxExp;
-            currentExp = maxExp;
-            UIManager.Instance.SetCurrentEXP(currentExp);
+            isLevelingUp = true;
             UpLevel();
         }
         else
         {
             currentExp += exp;
             remainingExp = 0;
+            UIManager.Instance.levelUpUI.gameObject.SetActive(false);
+            GameStateManager.Instance.ResumeGame();
         }
         UIManager.Instance.SetCurrentEXP(currentExp);
     }
@@ -220,11 +226,12 @@ public class Player : MonoBehaviour
         Debug.Log("level up " + playerLevel);
         GameStateManager.Instance.StopGame();
         AudioManager.Instance.PlaySFX("LevelUp");
-        playerLevel++; 
+        playerLevel++;
         UpdateStatsLevelUp();
-
-        UIManager.Instance.UpdateLeveTextlUI(playerLevel);
+        
         healthBar.SetMaxHeath(maxHealth);
+        
+        currentExp = maxExp;
         UIManager.Instance.SetCurrentEXP(currentExp);
         UIManager.Instance.SetMaxEXP(maxExp);
         UIManager.Instance.levelUpUI.SetLevelUp(SelectableWeaponToUpgrade());
@@ -244,8 +251,7 @@ public class Player : MonoBehaviour
         foreach (WeaponController weapon in currentWeaponList)
         {
             if (weapon == weaponController)
-            {
-                
+            {                
                 weapon.Upgrade();
                 isAvailable = true;
                 break;
@@ -258,12 +264,7 @@ public class Player : MonoBehaviour
             currentWeaponList.Add(newWeapon);
             UIManager.Instance.UpdateInventoryUI(newWeapon.sprite);
         }
-        AudioManager.Instance.PlaySFX("PowerUp");
-        UIManager.Instance.levelUpUI.gameObject.SetActive(false);              
-        if (remainingExp > 0)
-        {
-            GainEXP(remainingExp, true);
-        }            
+        
     }
     public void UpgradePassiveSkill(PassivesSkillController passivesSkillController)
     {
@@ -283,13 +284,8 @@ public class Player : MonoBehaviour
             newPassiveSkill.SetStats(1);
             currentPassiveSkillList.Add(newPassiveSkill);
             UIManager.Instance.UpdateInventoryUI(newPassiveSkill.sprite, false);
-        }
-        AudioManager.Instance.PlaySFX("PowerUp");
-        UIManager.Instance.levelUpUI.gameObject.SetActive(false);              
-        if (remainingExp > 0)
-        {
-            GainEXP(remainingExp, true);
-        }            
+        }             
+                    
     }
     public void UpgradeSkill(SkillController skill)
     {
@@ -308,6 +304,21 @@ public class Player : MonoBehaviour
                 UpgradePassiveSkill(passive);
             }
         }
+        AudioManager.Instance.PlaySFX("PowerUp");
+        UIManager.Instance.UpdateLeveTextlUI(playerLevel);
+        UIManager.Instance.SetMaxEXP(maxExp);        
+        currentExp = 0;
+        UIManager.Instance.SetCurrentEXP(currentExp);
+        isLevelingUp = false;
+        if (remainingExp > 0)
+        {            
+            GainEXP(remainingExp, true);
+        } 
+        else {            
+            UIManager.Instance.levelUpUI.gameObject.SetActive(false);
+            GameStateManager.Instance.ResumeGame();
+        }
+        //GameStateManager.Instance.ResumeGame();
     }
 
     public List<SkillController> SelectableWeaponToUpgrade()
@@ -383,68 +394,12 @@ public class Player : MonoBehaviour
                     {
                         continue;
                     }
-                    // bool isWeaponMaxLv = false;
-                    // foreach(WeaponController weapon in currentWeaponList)
-                    // {
-                    //     if (allSkill[rand].skillName == weapon.skillName)
-                    //     {
-                    //         if (weapon.level < weapon.maxLevel)
-                    //         {
-                    //             selectableSkill.Add(weapon);
-                    //             isSelected = true;
-                    //         }
-                    //         else
-                    //         {
-                    //             isWeaponMaxLv = true;
-                    //         }
-                    //         break;
-                    //     }                                        
-                    // }
-                    // if (!isSelected && !isWeaponMaxLv)
-                    // {
-                    //     selectableSkill.Add(allSkill[rand]);
-                    //     isSelected = true;
-                    // }
                     pickedSkillList.Add(selectableSkill[rand]);
                     isSelected = true;
                 }
             }            
         }
         return pickedSkillList;
-        
-        // int numberWeaponSelectable = maxNumberOfWeapon - amountWeaponsMaxLv;
-        // int numberPassiveSelectable = maxNumberOfPassive - amountPassiveSkillMaxLv;
-        // if (amountWeaponSelectableWhenLvUp)
-
-        // //int numberSelectable;
-        // if (maxNumberOfWeapon - amountWeaponsMaxLv < amountWeaponSelectableWhenLvUp)
-        // {
-        //     numberSelectable = maxNumberOfWeapon - amountWeaponsMaxLv;
-        //     if (numberSelectable > 0)
-        //     {
-        //         if (currentWeaponList.Count == maxNumberOfWeapon)
-        //         {
-        //             foreach (WeaponController weapon in currentWeaponList)
-        //             {
-        //                 if (weapon.level < weapon.maxLevel)
-        //                 {
-        //                     selectableSkill.Add(weapon);
-        //                 }
-        //             }
-        //             return selectableSkill;
-        //         }                
-        //     }
-        //     else
-        //     {
-        //         return null;
-        //     }
-        // }
-        // else
-        // {
-        //     numberSelectable = amountWeaponSelectableWhenLvUp;            
-        // }
-
-        
     }
     public void SetCharacterDefaultStats()
     {
@@ -468,7 +423,6 @@ public class Player : MonoBehaviour
         maxHealth += characterStats.healthForLevelUpStep;
         currentHealth = (currentHealth / tempMaxHealth) * maxHealth;
         maxExp += characterStats.expForLevelUpStep;
-        currentExp = 0;
     }
     public void ResetGame()
     {

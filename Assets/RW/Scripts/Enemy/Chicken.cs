@@ -28,10 +28,10 @@ public class Chicken : Enemy
     }
 
 
-    protected override void Death()
+    public override void Death(bool isKillingAll = false)
     {
         AudioManager.Instance.PlaySFX("ChickenDeath");
-        base.Death();
+        base.Death(isKillingAll);
     }
     
     protected override void FlipSprite()

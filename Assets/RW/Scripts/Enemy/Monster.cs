@@ -43,10 +43,10 @@ public class Monster : Enemy
         }
     }
 
-    protected override void Death()
+    public override void Death(bool isKillingAll = false)
     {
         GameStateManager.Instance.UpdateEnemyKilled();
-        base.Death();
+        base.Death(isKillingAll);
     }
 
     protected override void FlipSprite()
