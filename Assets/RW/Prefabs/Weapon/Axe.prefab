@@ -54,7 +54,7 @@ MonoBehaviour:
   weaponController: {fileID: 0}
   player: {fileID: 0}
   thrust: 5
-  gravity: 0.5
+  gravity: 0.25
 --- !u!61 &4239533067137824688
 BoxCollider2D:
   m_ObjectHideFlags: 0

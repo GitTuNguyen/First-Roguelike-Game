@@ -74,7 +74,7 @@ public class WeaponController : SkillController
     {
         if (projectileList.Count > 0)
         {
-            StopCoroutine(AttackRoutine());
+            StopAllCoroutines();
             foreach(var projectile in projectileList)
             {
                 Destroy(projectile);

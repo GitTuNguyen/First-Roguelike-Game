@@ -8,6 +8,7 @@ public class LevelUpUI : MonoBehaviour
     public SkillController skillSelected;    
     public void SetLevelUp(List<SkillController> selectableList)
     {
+        skillSelected = null;
         if (selectableList.Count == 0) 
         {
             return;
@@ -40,8 +41,7 @@ public class LevelUpUI : MonoBehaviour
         if (skillSelected != null)
         {
             AudioManager.Instance.PlaySFX("PowerUp");
-            GameStateManager.Instance.ResumeGame();
-            player.UpgradeSkill(skillSelected);            
+            player.UpgradeSkill(skillSelected);
         }        
     }
 }

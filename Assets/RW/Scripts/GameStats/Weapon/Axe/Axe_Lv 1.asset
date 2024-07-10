@@ -17,7 +17,7 @@ MonoBehaviour:
   level: 1
   maxLevel: 5
   description: Passes through enemies, bounces around.
-  projectileDMG: 10
+  projectileDMG: 5
   projectileSpeed: 7
   pierce: 0
   amount: 1

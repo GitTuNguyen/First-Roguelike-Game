@@ -16,8 +16,9 @@ MonoBehaviour:
   skillType: 1
   level: 3
   maxLevel: 5
-  description: Base damage up by 5. Effect lasts 0.5 seconds longer.
-  projectileDMG: 20
+  description: Base damage up by 5. Effect lasts 0.5 seconds longer. Fires 1 more
+    projectile.
+  projectileDMG: 15
   projectileSpeed: 6
   pierce: 0
   amount: 2
@@ -25,5 +26,5 @@ MonoBehaviour:
   projectileScale: 0
   radius: 0
   attackDuration: 0
-  cooldown: 3
+  cooldown: 5
   timeToDestroy: 3

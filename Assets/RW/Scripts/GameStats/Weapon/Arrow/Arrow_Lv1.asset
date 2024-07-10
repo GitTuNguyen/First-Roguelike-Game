@@ -21,9 +21,9 @@ MonoBehaviour:
   projectileSpeed: 7
   pierce: 1
   amount: 1
-  projectileInterval: 0.1
+  projectileInterval: 0.15
   projectileScale: 1
   radius: 0
   attackDuration: 0
-  cooldown: 1
+  cooldown: 3
   timeToDestroy: 5

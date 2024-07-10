@@ -17,7 +17,7 @@ MonoBehaviour:
   level: 3
   maxLevel: 5
   description: Base damage up by 5. Effect lasts 0.5 seconds longer.
-  projectileDMG: 20
+  projectileDMG: 15
   projectileSpeed: 7
   pierce: 0
   amount: 2

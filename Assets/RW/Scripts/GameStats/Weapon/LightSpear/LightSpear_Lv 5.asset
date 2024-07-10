@@ -25,5 +25,5 @@ MonoBehaviour:
   projectileScale: 0
   radius: 0
   attackDuration: 0
-  cooldown: 3
+  cooldown: 5
   timeToDestroy: 3

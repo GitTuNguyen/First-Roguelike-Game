@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Linq;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -119,4 +120,5 @@ public class GameStateManager : MonoBehaviour
             lootItemList.Clear();
         }
     }
+    
 }

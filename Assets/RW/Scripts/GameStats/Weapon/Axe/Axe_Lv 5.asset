@@ -16,8 +16,8 @@ MonoBehaviour:
   skillType: 1
   level: 5
   maxLevel: 5
-  description: Base damage up by 5. Base speed up by 20%. Fires 1 more projectile.
-  projectileDMG: 25
+  description: Fires 1 more projectile. Base speed up by 20%. Fires 1 more projectile.
+  projectileDMG: 20
   projectileSpeed: 9
   pierce: 0
   amount: 3
